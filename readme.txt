@@ -6,7 +6,16 @@ Version: 1.0
 Tags: blog, two-columns, left-sidebar, custom-background, custom-colors, custom-header, custom-logo, custom-menu, editor-style, featured-images, microformats, post-formats, sticky-post
 
 == Description ==
-This is a Blank WordPress Theme that has been developed to allow users to quickly develope a theme. This theme only has the bare minimum required to make a theme. To help users we have also included the code for a functioning WordPress menu. This menu is responsive across Desktop and Mobile Devices. This theme utilises my Core CSS framework.
+
+This is a Blank WordPress Theme that has been developed to allow users to quickly develop a theme without having to create everything from scratch.
+
+This theme only has the bare minimum required to make a theme.
+
+Some Markup Schema examples have been added to help your themes SEO abilities.
+
+To help users we have also included the code for a functioning WordPress menu. This menu is responsive across Desktop and Mobile Devices.
+
+This theme utilises my Core CSS framework.
 
 * Mobile-first, Responsive Layout
 
