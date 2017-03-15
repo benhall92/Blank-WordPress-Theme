@@ -15,6 +15,8 @@ Some Markup Schema examples have been added to help your themes SEO abilities.
 
 To help users we have also included the code for a functioning WordPress menu. This menu is responsive across Desktop and Mobile Devices.
 
+A link to FontAwesome has been added to allow the use of their icon library.
+
 This theme utilises my Core CSS framework.
 
 * Mobile-first, Responsive Layout
