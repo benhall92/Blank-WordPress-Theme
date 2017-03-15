@@ -1,0 +1,48 @@
+// =========================
+// Set the gutter variables
+// =========================
+
+$desk-gutter: 20;
+$tab-gutter: 20;
+$mob-gutter: 20;
+
+// =========================
+// Set base font size
+// =========================
+
+$base-font-size: 10px;
+
+// =========================
+// Set global spacing values
+// =========================
+
+$global-spacing-values: ('1/2', '1x', '2x', '3x', '0');
+
+// =========================
+// Set spacing values
+// =========================
+
+$base-spacing-unit: 10px;
+
+// =========================
+// Viewport values
+// =========================
+
+$viewport-values: (
+	palm: (320, 4),
+	lap: (640, 8),
+	desk: (1024, 12)
+);
+
+// =========================
+// Global Spacing Directions
+// =========================
+
+$global-spacing-directions:(
+	t: (top),
+	b: (bottom),
+	l: (left),
+	r: (right),
+	tb: (top, bottom),
+	lr: (left, right)
+);

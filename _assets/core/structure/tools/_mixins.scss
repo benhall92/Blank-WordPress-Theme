@@ -1,0 +1,318 @@
+@mixin media-query($breakpoint){
+
+	$_palm: map-get($viewport-values, palm);
+	$_palmNth: nth($_palm, 1);
+
+	$_lap: map-get($viewport-values, lap);
+	$_lapNth: nth($_lap, 1);
+
+	$_desk: map-get($viewport-values, desk);
+	$_deskNth: nth($_desk, 1);
+
+	@each $viewport, $val in $viewport-values{
+
+		@if $viewport == desk {
+
+			@if $breakpoint == nth($val, 1){
+
+				@media only screen and (min-width: $_deskNth + 1 + px){
+
+					@content;
+
+				}
+			}
+
+		}@else if $viewport == lap {
+
+			@if $breakpoint == nth($val, 1){
+
+				@media only screen and (min-width: nth($val, 1) + px) and (max-width: $_deskNth + px){
+
+					@content;
+
+				}
+			}
+
+		}@else if $viewport == palm {
+
+			@if $breakpoint == nth($val, 1){
+
+				@media only screen and (min-width: nth($val, 1) + px) and (max-width: $_lapNth - 1 + px){
+
+					@content;
+
+				}
+			}
+
+		}
+	}
+}
+
+
+@mixin generate-grid(){
+
+	@each $viewport, $val in $viewport-values{
+
+		@if $viewport == palm {
+
+			@include calc-grid($viewport, $val);
+
+		}@else if $viewport == lap {
+
+			@include calc-grid($viewport, $val);
+
+		}@else{
+
+			@include calc-grid($viewport, $val);
+
+		}
+
+	}
+
+}
+
+@mixin generate-fraction(){
+
+	@each $viewport, $val in $viewport-values{
+
+		@if $viewport == palm {
+
+			@include calc-fraction($viewport, $val);
+
+		}@else if $viewport == lap {
+
+			@include calc-fraction($viewport, $val);
+
+		}@else{
+
+			@include calc-fraction($viewport, $val);
+
+		}
+
+	}
+
+}
+
+@mixin generate-push(){
+
+	@each $viewport, $val in $viewport-values{
+
+		@include calc-push($viewport, $val);
+
+	}
+
+}
+
+@mixin generate-pull(){
+
+	@each $viewport, $val in $viewport-values{
+
+		@include calc-pull($viewport, $val);
+
+	}
+
+}
+
+@mixin generate-visible-viewports(){
+
+	@each $viewport, $val in $viewport-values{
+
+		@include calc-visible-viewports($viewport, $val);
+
+	}
+
+}
+
+@mixin box-sizing(){
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+@mixin calc-push($viewport, $val){
+
+	$_colTotal: nth($val, 2); 
+	$_cols: nth($val, 2);
+	$_width: nth($val, 1);
+
+	@include media-query($_width){
+
+		@while $_cols >= 0 {
+
+			[data-#{$viewport}~="#{$viewport}-push-#{$_cols}"]{
+				position: relative;
+				left: unquote(calc-grid($_cols, $_width, $_colTotal)) !important;
+
+			}
+
+			$_cols: $_cols - 1;
+
+		}
+	}
+
+}
+
+@mixin calc-pull($viewport, $val){
+
+	$_colTotal: nth($val, 2); 
+	$_cols: nth($val, 2);
+	$_width: nth($val, 1);
+
+	@include media-query($_width){
+
+		@while $_cols >= 0 {
+
+			[data-#{$viewport}~="#{$viewport}-pull-#{$_cols}"]{
+				position: relative;
+				right: unquote(calc-grid($_cols, $_width, $_colTotal)) !important;
+
+			}
+
+			$_cols: $_cols - 1;
+
+		}
+	}
+
+}
+
+@mixin calc-grid($viewport, $val){
+	
+	$_colTotal: nth($val, 2); 
+	$_cols: nth($val, 2);
+	$_width: nth($val, 1);
+
+	@include media-query($_width){
+
+		@while $_cols > 0 {
+
+			[data-#{$viewport}~="#{$viewport}-#{$_cols}-#{$_colTotal}"]{
+
+				width: unquote(calc-grid($_cols, $_width, $_colTotal)) !important;
+
+			}
+
+			$_cols: $_cols - 1;
+
+		}
+
+	}
+
+}
+
+@mixin calc-fraction($viewport, $val){
+	
+	$_colTotal: nth($val, 2); 
+	$_cols: nth($val, 2);
+	$_width: nth($val, 1);
+	$_fractions: 10;
+
+	@include media-query($_width){
+
+		@for $i from 1 through $_fractions{
+
+			$_total : $i;
+			$_frac: 1;
+
+			@while $_frac <= $_total {
+	
+				[data-#{$viewport}~="#{$viewport}-#{$_frac}/#{$_total}"]{
+
+					width: unquote(calc-percent(calc-fraction($_width, $_total, $_frac), $_width ) ) !important;
+
+				}
+
+				$_frac: $_frac + 1;
+
+			}
+
+		}
+
+	}
+
+}
+
+@mixin calc-prop($property: 'padding', $unit: '1x', $directions: false, $important: false){
+
+	@if $important{
+		$important : ' !important';
+	}@else{
+		$important: '';
+	}
+
+	@if map-count($directions) > 0{
+
+		@each $position in $directions{
+
+			#{property}-#{position}: spacing-calc($unit)#{$important};
+
+		}
+
+	}@else{
+
+		#{property}-#{position}: spacing-calc($unit);
+
+	}
+
+}
+
+@mixin calc-visible-viewports($viewport, $val){
+
+	$_colTotal: nth($val, 2); 
+	$_cols: nth($val, 2);
+	$_width: nth($val, 1);
+
+	@include media-query($_width){
+
+		@while $_cols >= 0 {
+
+			[data-#{$viewport}~="#{$viewport}-hidden"]{
+
+				display: none !important;
+			}
+
+			$_cols: $_cols - 1;
+
+		}
+	}
+}
+
+@mixin rem($property, $values) {
+  $px : ();
+  $rem: ();
+
+  @each $value in $values {
+
+    @if $value == 0 or $value == auto { 
+      $px : append($px , $value);
+      $rem: append($rem, $value);
+    }
+
+    @else {
+      $unit: unit($value); 
+      $val: parseInt($value);
+
+      @if $unit == "px" {
+        $px : append($px,  $value);
+        $rem: append($rem, ($val / 10 + rem));
+      }
+
+      @if $unit == "rem"{
+        $px : append($px,  ($val * 10 + px));
+        $rem: append($rem, $value);
+      }
+    }
+  }
+
+  @if $px == $rem {  
+    #{$property}: $px; 
+  } @else {
+    #{$property}: $px; 
+    #{$property}: $rem; 
+  }
+}
+
+@mixin removeWebkitStyle(){
+	-webkit-appearance: none;
+    -webkit-border-radius:0; 
+    border-radius:0;
+}

@@ -1,0 +1,15 @@
+@each $viewport, $breakpoint in $viewport-values{
+
+	@include media-query(nth($breakpoint, 1)){
+
+		[data-#{$viewport}="#{$viewport}-float-left"] {float: left !important};
+		[data-#{$viewport}="#{$viewport}-float-right"] {float: right !important};
+		[data-#{$viewport}="#{$viewport}-float-none"] {float: none !important};
+
+	}
+
+}
+
+.float-left{ float: left; }
+.float-right{ float: right; }
+.float-none{ float: none; }

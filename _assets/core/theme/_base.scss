@@ -1,0 +1,180 @@
+*{ @include box-sizing(); }
+
+html,body{
+	min-height: 100%;
+	height: 100%;
+	font-family: Tahoma, Arial, sans-serif;
+	font-size: 16px;
+	 overflow-x: hidden;
+}
+
+*{
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: 	border-box;
+	-o-box-sizing: 		border-box;
+    box-sizing: 		border-box;
+}
+
+/*------------------------------------*\
+	$FONTS
+\*------------------------------------*/
+
+h1, .h1, h2, .h2, h3, .h3, 
+h4, .h4, h5, .h5, h6, .h6{
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+	line-height: 1.5;
+	font-weight: bold;
+}
+
+.h1, h1{ font-size: 36px; }
+.h2, h2{ font-size: 30px; }
+.h3, h3{ font-size: 24px; }
+.h4, h4{ font-size: 18px; }
+.h5, h5{ font-size: 14px; }
+.h6, h6{ font-size: 12px; }
+
+a, .a, p, .p, i.fa{
+	font-weight: normal;
+	font-size: 16px;
+	line-height: 1.5;
+}
+
+.fa{ cursor: pointer; }
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6, p, .p{
+	color: #222;
+
+	a{ font-size: inherit; }
+
+	strong, span, em, i, b, s, strike{
+		color: inherit;
+		font-weight: inherit;
+		font-size: inherit;
+	}
+}
+
+blockquote, em{ font-style: italic; }
+
+small{ font-size: 85%; }
+
+strong{ font-weight: bold; }
+
+strike{ text-decoration: line-through; }
+
+blockquote{
+	font-size: 20px;
+	margin-bottom: 1em;
+	margin-top: 1em;
+	padding: 1em;
+	background-color: #F2F2F2;
+	border: 1px solid #EEE;
+}
+
+hr{
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+
+
+
+
+/*------------------------------------*\
+	$IMAGES
+\*------------------------------------*/
+
+img{
+	max-width: 100%;
+	height: auto;
+}
+
+
+
+
+
+/*------------------------------------*\
+	$TABLE
+\*------------------------------------*/
+
+table{ overflow-x: auto; }
+
+tbody, tfoot, thead, tr, th, td{
+	padding: 0.5em;
+}
+
+
+
+
+/*------------------------------------*\
+	$FORM ELEMENTS
+\*-----------------------------------*/
+
+label{
+	display: block;
+	margin-top: 1em;
+	margin-bottom: 1em;
+
+	span{
+		display: block;
+		font-size: 16px;
+		padding-bottom: 0.5em;
+	}
+}
+
+button, input[type="submit"], select,
+input[type="checkbox"], input[type="radio"]{
+	cursor: pointer;
+}
+
+input, select, textarea, button{
+	padding: 0.5em;
+	font-size: 16px;
+	resize: none;
+	border: #acacac solid 1px;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-o-appearance: none;
+	appearance: none;
+}
+
+input[type="checkbox"], input[type="radio"]{
+	display: inline-block;
+
+	& + span, p{
+		display: inline-block;
+		vertical-align: middle;
+		padding-bottom: 0;
+		padding-right: 10px;
+	}
+}
+
+input[type="checkbox"]{
+	-webkit-appearance: checkbox;
+	-moz-appearance: checkbox;
+	-o-appearance: checkbox;
+	appearance: checkbox;
+}
+
+input[type="radio"]{
+	-webkit-appearance: radio;
+	-moz-appearance: radio;
+	-o-appearance: radio;
+	appearance: radio;
+}
+
+select{
+	padding-right: 30px;
+	background-image: url('../img/select-arrow.png');
+	background-repeat: no-repeat;
+	background-position: right center;
+}
+
+
+
+
+
+
+
+
+
