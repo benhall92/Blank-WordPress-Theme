@@ -47,9 +47,13 @@ get_header(); ?>
 
 							<h3><?php the_title(); ?></h3>
 
+							<p>
+								<small><i class="fa fa-user" aria-hidden="true"></i> <?php the_author(); ?></small> | <small><i class="fa fa-calendar" aria-hidden="true"></i> <?php the_date(); ?></small>
+							</p>
+
 							<p><?php the_excerpt(); ?></p>
 
-							<button class="btn btn--medium">Read More</button>
+							<button class="btn">Read More</button>
 
 						</a>
 						
