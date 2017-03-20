@@ -490,6 +490,8 @@ input, button, select, textarea{
 					position: absolute;
 					white-space: nowrap;
 					max-width: 200px;
+
+					li{ display: block; }
 				}
 
 				&:hover{
