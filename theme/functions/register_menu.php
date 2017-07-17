@@ -10,10 +10,12 @@ function register_my_menu() {
 	// Slug then nice name
 	// register_nav_menu( $location, $description );
 	
-	register_nav_menu('main-menu',__( 'Main Menu' ));
+	register_nav_menu('mega_menu',__( 'Mega Menu' ));
+
+	register_nav_menu('mobile_menu',__( 'Mobile Menu' ));
 }
 
 // Register menus
-add_action( 'init', 'register_my_menu' );
+add_action( 'after_setup_theme', 'register_my_menu' );
 
 ?>

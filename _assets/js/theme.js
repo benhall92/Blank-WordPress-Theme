@@ -19,7 +19,7 @@ jQuery(document).ready(function($) {
 
 			if( $( $(window).outerWidth() <= 1024) ){
 
-				$('#mobileMenu').toggleClass('is--open');
+				$('#mobileMenu').toggle();
 			}
 
 		});
@@ -132,7 +132,7 @@ jQuery(document).ready(function($) {
 
 	Interpolate.checkSidebar = function () {
 
-		var $sidebar = $('.sidebar__widget-list');
+		var $sidebar = $('.sidebar');
 
 		if( $(window).outerWidth() > 640 ){
 
@@ -150,6 +150,61 @@ jQuery(document).ready(function($) {
 		}
 	}
 
+	Interpolate.searchTrigger = function () {
+
+		var $searchTrigger 	= $('#searchTrigger'),
+			$mobileSearch 	= $('.mobile-search');
+
+		$searchTrigger.on('click', function () {
+
+			$mobileSearch.toggle();
+		});
+
+	};
+
+	Interpolate.megaMenuOverlay = function () {
+
+		var $li = $('.mega-menu > li');
+
+		$li.mouseenter( function (e) {
+
+			if( !$(this).hasClass('has-mega-menu') ){
+
+				return;
+			}
+
+			if( $(e.target).closest('.mega-menu__list').length ){
+
+				console.log('one');
+
+				if( $('.mega-menu-overlay').is(':hidden') ){
+
+					console.log('two');
+
+					$('.mega-menu-overlay').show();
+				}
+			}
+
+		}).mouseleave( function (e) {
+
+			$('.mega-menu-overlay').hide();
+
+		});
+	}
+
+	Interpolate.wishlistReverse = function () {
+
+		var $addWishList = $('.add_to_wishlist');
+
+		$addWishList.each(function () {
+
+			var $this 		= $(this),
+				$loading 	= $this.next('.ajax-loading');
+
+			$loading.insertBefore($this);
+		});
+	}
+
 	// Run necessary functions here
 	Interpolate.init = function () {
 
@@ -159,6 +214,9 @@ jQuery(document).ready(function($) {
 		self.closeMobileMenu();
 		self.mobileMenuTrigger();
 		self.addDropArrows();
+		self.megaMenuOverlay();
+		self.wishlistReverse();
+		self.searchTrigger();
 	}
 
 	// Once the window has loaded, run the following functions.

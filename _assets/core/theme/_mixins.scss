@@ -1,0 +1,111 @@
+@mixin display_flex () {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+}
+
+@mixin btn-x-small($important:null){
+	padding: 2px 10px $important;
+	font-size: 12px $important;
+}
+
+@mixin btn-small($important:null){
+	padding: 5px 10px $important;
+	font-size: 14px $important;
+}
+
+@mixin btn-medium($important:null){
+	padding: 7.5px 60px $important;
+	font-size: 18px $important;
+}
+
+@mixin btn-large($important:null){
+	padding: 10px 90px $important;
+	font-size: 20px $important;
+}
+
+@mixin btn-primary(){
+	background-color: $primary-green;
+	color: #FFF;
+	border-color: $primary-green;
+	border-radius: 0;
+	font-weight: 400;
+
+	&:hover{
+		color: #FFF;
+		background-color: $secondary-green;
+		border-color: $secondary-green;
+	}
+}
+
+@mixin select-x-small($important:null){
+	padding: 0.3em 3rem 0.3em 0.5em $important;
+	font-size: 14px $important;
+}
+
+@mixin select-small($important:null){
+	padding: 0.5em 3em 0.5em 1em $important;
+	font-size: 16px $important;
+}
+
+@mixin select-medium($important:null){
+	padding: 0.75em 3em 0.75em 1em $important;
+	font-size: 18px $important;
+}
+
+@mixin select-large($important:null){
+	padding: 1em 3em 1em 1em $important;
+	font-size: 20px $important;
+}
+
+@mixin css3-transition($transition){
+	-webkit-transition: $transition;
+	-moz-transition: $transition;
+	-o-transition: $transition;
+	transition: $transition;
+}
+
+@mixin tab-heading-primary-blue{
+	padding: 11px;
+	border-radius: 6px 6px 0 0;
+	background-color: $variable;
+	color: #FFF;
+	text-transform: capitalize;
+}
+
+@mixin menu-widget-title{
+	padding: 0 0 10px;
+	margin: 0 0 10px;
+	color: $primary-green;
+	font-size: $base-font;
+	text-align: left;
+	border-bottom: 1px solid $secondary-gray;
+}
+
+@mixin cart-button{
+	padding: 16px 10px;
+    font-size: 16px;
+	font-weight: 300;
+    border-radius: 0;
+}
+
+@mixin cart-th{
+	padding: 20px 20px;
+	background-color: $quarternary-gray;
+}
+
+@mixin cart-td{
+	padding: 20px 20px;
+	border: none;
+}
+
+@mixin checkout-input{
+	padding: 15px 5px;
+	border-bottom: none;
+	border-top: 1px solid #D7D7D7;
+	border-left: 1px solid $secondary-gray;
+	border-right: 1px solid $secondary-gray;
+	background-color: $quarternary-gray;
+}

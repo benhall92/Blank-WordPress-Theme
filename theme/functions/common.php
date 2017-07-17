@@ -6,25 +6,25 @@
  **/
 function image_seo($img){
 
-	if($img['alt'] !== ''){
+    if($img['alt'] !== ''){
 
-		$alt = $img['alt'];
-	
-	}else{
+        $alt = $img['alt'];
+    
+    }else{
 
-		$alt = get_the_title() . ' | ' . get_bloginfo('name');
-	}
+        $alt = get_the_title() . ' | ' . get_bloginfo('name');
+    }
 
-	if($img['title'] !== ''){
+    if($img['title'] !== ''){
 
-		$title = $img['title'];
-	
-	}else{
+        $title = $img['title'];
+    
+    }else{
 
-		$title = get_the_title() . ' | ' . get_bloginfo('name');
-	}
+        $title = get_the_title() . ' | ' . get_bloginfo('name');
+    }
 
-	echo 'title="'.$title.'" alt="'.$alt.'"';
+    return 'title="'.$title.'" alt="'.$alt.'"';
 }
 
 /*
@@ -59,6 +59,119 @@ function setPostViews($postID) {
         $count++;
         update_post_meta($postID, $count_key, $count);
     }
+}
+
+
+/*
+ * Output text to an html element.
+ * This function will check if any text exists before outputting.
+ * This prevents the need to use messy if codes.
+ *
+ * @param   $copy   string   This is the copy to be output
+ * @param   $tag    string   This is the HTML element
+ */
+
+function output_text($copy, $tag = false, $classes = false) {
+
+    // if( $tag == "" || $tag == false || $tag == null ){
+
+    //     return;
+    // }
+
+    if( $copy == "" || $copy == false || $copy == null ){
+
+        return;
+    }
+
+    if ( $classes != "" || $classes != false ) {
+
+        $class = ' class="'.$classes.'" ';
+    
+    }else{
+
+        $class = "";
+    }
+
+    if( !$tag ){
+
+        echo $copy;
+
+    }else{
+
+        echo '<'.$tag. $class.'>'.$copy.'</'.$tag.'>';
+
+    }
+}
+
+/*
+ * Output text to an html element.
+ * This function will check if any text exists before outputting.
+ * This prevents the need to use messy if codes.
+ *
+ * @param   $copy   string   This is the copy to be output
+ * @param   $tag    string   This is the HTML element
+ */
+
+function output_link($copy, $link = "#", $target = false, $title = false, $wrap = false) {
+
+    $title_text;
+    $target_text;
+
+    if( $link == "" || $link == false || $link == null ){
+
+        return;
+    }
+
+    if( $copy == "" || $copy == false || $copy == null ){
+
+        return;
+    }
+
+    if( $title != false ){
+
+        $title_text = 'title="'.$title.'"';
+    }
+
+    if( $target != false ){
+
+        $target_text = 'target="'.$target.'"';
+    }
+
+    if ( $wrap != false ) {
+        
+        echo '<'.$wrap.'>';
+    }
+
+    echo '<a href="'.$link.'" '.$target_text.' '.$title_text.' >'.$copy.'</a>';
+
+    if ( $wrap != false ) {
+        
+        echo '</'.$wrap.'>';
+    }
+}
+
+/*
+ * Output img as an html element.
+ * This function will check if an img url exists
+ * then it will output the image.
+ * This prevents the need to use messy if codes.
+ *
+ * @param   $img    string   An ACF (or equivalent) img object
+ */
+
+function output_img($img) {
+
+    $url = $img['url'];
+
+    if( $url == "" || $url == false || $url == null ){
+
+        return;
+    
+    }else{
+
+        echo '<img src="'.$url.'" '.image_seo($img).' />';
+    }
+
 }
 
 ?>
