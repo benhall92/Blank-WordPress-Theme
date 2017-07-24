@@ -35,6 +35,11 @@ if( isset($_GET['view']) ){
 
 }
 
+if( $_GET['view'] === 'all' ) { ?>
+  <div id="wg-view-all"><a href=".">View Less</a></div>
+<?php }
+
+
 if ( $wp_query->max_num_pages <= 1 )
   return;
 ?>

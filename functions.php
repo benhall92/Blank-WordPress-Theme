@@ -325,6 +325,10 @@ function wg_view_all_products(){
         return '9999';
     }else{
         return '12';
+
+    if($_GET['view'] === 'all'){
+        return '9999';
+
     }
 }
 
