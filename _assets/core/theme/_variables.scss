@@ -1,8 +1,26 @@
-$primary-turquoise: #009a92; // Mid Turquoise used for headings
+$variable: '';
 
-$primary-gray: #58585a; // Dark grey, most commonly used for fonts
-$secondary-gray: #e5e5e6; // Light grey, most commonly used for related areas
+$primary-green: #7dc876; // Main Green. Used for branding, buttons and text.
+$secondary-green: #6eaf68; // Used for the border of woocommerce messages.
 
-$primary-black: #231f20; // Slightly off black, most commonly used for fonts
+$primary-red: #d41e1e; // Main Red. Used for branding, buttons and text.
+$secondary-red: #d41d1d; // Used for sale prices.
+$tertiary-red: #df3737; // Used for woocommerce errors.
 
-$primary-purple: #6a4c8e;
+$primary-gray: #5c5c5c; // Main Gray. Used for Main Nav and Fonts.
+$secondary-gray: #eeeeee; // Second Gray. Used for the top bar and borders.
+$tertiary-gray: #898584;
+$quarternary-gray: #f6f6f6; // used for the background of the sidebar title
+$quinternary-gray: #e5e5e5; // Used for the background of the sidebar
+$secternary-gray: #aaaaaa; // Used for the product information on product single page
+
+$primary-off-black: #484848;
+
+$primary-yellow: #ffca00; // Used for star ratings
+
+$primary-font: 'Roboto', sans-serif;
+
+$base-font: 16px;
+$small-font: 14px;
+
+$font-bold: 700;

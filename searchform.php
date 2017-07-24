@@ -1,17 +1,17 @@
 <?php
 /**
- * Template for displaying search forms in Twenty Eleven
+ * Template for displaying search forms in Oakworld
  *
  * @package WordPress
- * @subpackage Blank
- * @since Blank 1.0
+ * @subpackage Oakworld
+ * @since Oakworld 1.0
  */
 ?>
-<form method="get" id="searchform" class="search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+<form method="get" id="searchform" class="search-form search-form--inline" action="<?php echo esc_url( home_url( '/' ) ); ?>">
 
-	<input type="text" class="input" name="s" id="s" placeholder="<?php esc_attr_e( 'Search', 'interpolate-restaurant-theme' ); ?>" />
+	<input type="text" class="input" name="s" id="s" placeholder="<?php esc_attr_e( 'Search product name, code or range', 'oakworld' ); ?>" />
 
-	<button type="submit" class="btn search-form__submit" name="submit" id="searchsubmit">
-		<?php _e(' SEARCH', 'blank-theme') ?>
+	<button type="submit" class="btn btn--primary search-form__submit" name="submit" id="searchsubmit">
+		<i class="fa fa-search" aria-hidden="true"></i>
 	</button>
 </form>

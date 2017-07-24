@@ -3,3 +3,51 @@
 	-moz-box-sizing: 	border-box;
 	box-sizing: 		border-box;
 }
+
+@mixin btn-x-small($important:null){
+	padding: 2px 10px $important;
+	font-size: 16px $important;
+}
+
+@mixin btn-small($important:null){
+	padding: 5px 10px $important;
+	font-size: 16px $important;
+}
+
+@mixin btn-medium($important:null){
+	padding: 7.5px 60px $important;
+	font-size: 18px $important;
+}
+
+@mixin btn-large($important:null){
+	padding: 10px 90px $important;
+	font-size: 20px $important;
+}
+
+@mixin select-x-small($important:null){
+	padding: 0.3em 3rem 0.3em 0.5em $important;
+	font-size: 14px $important;
+}
+
+@mixin select-small($important:null){
+	padding: 0.5em 3em 0.5em 1em $important;
+	font-size: 16px $important;
+}
+
+@mixin select-medium($important:null){
+	padding: 0.75em 3em 0.75em 1em $important;
+	font-size: 18px $important;
+}
+
+@mixin select-large($important:null){
+	padding: 1em 3em 1em 1em $important;
+	font-size: 20px $important;
+}
+
+@mixin tab-heading-primary-blue{
+	padding: 11px;
+	border-radius: 6px 6px 0 0;
+	background-color: $variable;
+	color: #FFF;
+	text-transform: capitalize;
+}

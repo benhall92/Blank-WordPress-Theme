@@ -1,4 +1,4 @@
-=== Blank WordPress Theme ===
+=== Oakworld WordPress Theme ===
 Contributors: Interpolate co
 Requires at least: WordPress 4.1
 Tested up to: WordPress 4.7.2
@@ -7,7 +7,7 @@ Tags: blog, two-columns, left-sidebar, custom-background, custom-colors, custom-
 
 == Description ==
 
-This is a Blank WordPress Theme that has been developed to allow users to quickly develop a theme without having to create everything from scratch.
+This is a Oakworld WordPress Theme that has been developed to allow users to quickly develop a theme without having to create everything from scratch.
 
 This theme only has the bare minimum required to make a theme.
 

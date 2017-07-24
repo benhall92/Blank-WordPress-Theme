@@ -1,5 +1,5 @@
 /*
-Theme Name: Blank Theme
+Theme Name: Oakworld
 Theme URI: http://interpolate.co;
 Author: Interpolate co
 Author URI: http://wordpress.org/
@@ -13,6 +13,7 @@ Text Domain: blank-theme
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
 */
+
 
 /**
  * Default Body Class Styles
@@ -131,83 +132,593 @@ blockquote.right {}
  * Default WordPress Widget Styles
  */
 
-.widget {}
+.widget {
+	margin-bottom: 3.5em;
+	padding-top: 1.75em;
+}
 
-#searchform {}
-.widget_search {}
-.screen-reader-text {}
+.widget-area > :last-child,
+.widget > :last-child {
+	margin-bottom: 0;
+}
 
-.widget_meta {}
-.widget_meta ul {}
-.widget_meta ul li {}
-.widget_meta ul li a {}
+.widget .widget-title {
+	font-family: "Helvetica Neue", sans-serif;
+	font-size: 16px;
+	font-size: 1rem;
+	letter-spacing: 0.046875em;
+	line-height: 1.3125;
+	margin: 0 0 1.75em;
+	text-transform: uppercase;
+}
 
-.widget_links {}
-.widget_links ul {}
-.widget_links ul li {}
-.widget_links ul li a {}
+.widget .widget-title:empty {
+	margin-bottom: 0;
+}
 
-.widget_archive {}
-.widget_archive ul {}
-.widget_archive ul li {} 
-.widget_archive ul li a {}
-.widget_archive select {}
-.widget_archive option {}
+.widget-title a {
+	color: #1a1a1a;
+}
 
-.widget_pages {}
-.widget_pages ul {}
-.widget_pages ul li {}
-.widget_pages ul li a {}
+/* Calendar widget */
+.widget.widget_calendar table {
+	margin: 0;
+}
 
-.widget_links {}
-.widget_links li:after {}
-.widget_links li:before {}
-.widget_tag_cloud {}
-.widget_tag_cloud a {}
-.widget_tag_cloud a:after {}
-.widget_tag_cloud a:before {}
+.widget_calendar td,
+.widget_calendar th {
+	line-height: 2.5625;
+	padding: 0;
+	text-align: center;
+}
 
-.widget_calendar {}
-#calendar_wrap {}
-#calendar_wrap th {}
-#calendar_wrap td {}
-#wp-calendar tr td {}
-#wp-calendar caption {}
-#wp-calendar a {}
-#wp-calendar #today {}
-#wp-calendar #prev {}
-#wp-calendar #next {}
-#wp-calendar #next a {}
-#wp-calendar #prev a {}
+.widget_calendar caption {
+	font-weight: 900;
+	margin-bottom: 1.75em;
+}
 
-.widget_categories {}
-.widget_categories ul {}
-.widget_categories ul li {} 
-.widget_categories ul ul.children {}
-.widget_categories a {}
-.widget_categories select{}
-.widget_categories select#cat {}
-.widget_categories select.postform {}
-.widget_categories option {}
-.widget_categories .level-0 {}
-.widget_categories .level-1 {}
-.widget_categories .level-2 {}
-.widget_categories .level-3 {}
+.widget_calendar tbody a {
+	background-color: #007acc;
+	color: #fff;
+	display: block;
+	font-weight: 700;
+}
 
-.recentcomments {}
-#recentcomments {}
-#recentcomments li {}
-#recentcomments li a {}
-.widget_recent_comments {}
+.widget_calendar tbody a:hover,
+.widget_calendar tbody a:focus {
+	background-color: #686868;
+	color: #fff;
+}
 
-.widget_recent_entries {}
-.widget_recent_entries ul {}
-.widget_recent_entries ul li {}
-.widget_recent_entries ul li a {}
+/* Recent Posts widget */
+.widget_recent_entries .post-date {
+	color: #686868;
+	display: block;
+	font-family: "Helvetica Neue", sans-serif;
+	font-size: 13px;
+	font-size: 0.8125rem;
+	line-height: 1.615384615;
+	margin-bottom: 0.538461538em;
+}
 
-.textwidget {}
-.widget_text {}
-.textwidget p {}
+.widget_recent_entries li:last-child .post-date {
+	margin-bottom: 0;
+}
+
+/* RSS widget */
+.widget_rss .rsswidget img {
+	margin-top: -0.375em;
+}
+
+.widget_rss .rss-date,
+.widget_rss cite {
+	color: #686868;
+	display: block;
+	font-family: "Helvetica Neue", sans-serif;
+	font-size: 13px;
+	font-size: 0.8125rem;
+	font-style: normal;
+	line-height: 1.615384615;
+	margin-bottom: 0.538461538em;
+}
+
+.widget_rss .rssSummary:last-child {
+	margin-bottom: 2.1538461538em;
+}
+
+.widget_rss li:last-child :last-child {
+	margin-bottom: 0;
+}
+
+/* Tag Cloud widget */
+.tagcloud a {
+	border: 1px solid #d1d1d1;
+	border-radius: 2px;
+	display: inline-block;
+	font-family: "Helvetica Neue", sans-serif;
+	line-height: 1;
+	margin: 0 0.1875em 0.4375em 0;
+	padding: 0.5625em 0.4375em 0.5em;
+}
+
+.tagcloud a:hover,
+.tagcloud a:focus {
+	border-color: #007acc;
+	color: #007acc;
+	outline: 0;
+}
+
+.widget {
+    margin: 0 0 3.706325903em
+}
+
+.calendar_wrap, .textwidget{ padding: 10px; }
+
+.widget__content .search-form{ margin: 10px; }
+
+    .calendar_wrap table#wp-calendar{ width: 100%; }
+
+        .calendar_wrap table#wp-calendar caption{ font-weight: bold; }
+
+.widget .widget-search .search-submit {
+    clip: rect(1px 1px 1px 1px);
+    clip: rect(1px, 1px, 1px, 1px);
+    position: absolute!important
+}
+
+.widget .widget-title,
+.widget .widgettitle {
+    font-size: 1.41575em;
+    letter-spacing: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, .05);
+    padding: 0 0 1em;
+    margin-bottom: 1em;
+    font-weight: 700
+}
+
+.widget ul {
+    margin-left: 0;
+    list-style: none
+}
+
+.widget ul ul {
+    margin-left: 1.618em
+}
+
+.widget-area .widget {
+    font-weight: 300
+}
+
+.widget-area .widget a.button {
+    font-weight: 700!important;
+    color: #fff
+}
+
+.widget-area .widget a.button:hover {
+    color: #fff
+}
+
+.header-widget-region:after,
+.header-widget-region:before {
+    content: "";
+    display: none;
+}
+
+.header-widget-region .widget {
+    margin: 0;
+    padding: 1em 0;
+    font-size: .875em
+}
+
+.widget_product_search form,
+.widget_search form {
+    position: relative
+}
+
+.widget_product_search form input[type=search],
+.widget_product_search form input[type=text],
+.widget_search form input[type=search],
+.widget_search form input[type=text] {
+    width: 100%;
+    padding-left: 2.617924em
+}
+
+.widget_product_search form input[type=submit],
+.widget_search form input[type=submit] {
+    clip: rect(1px 1px 1px 1px);
+    clip: rect(1px, 1px, 1px, 1px);
+    position: absolute!important;
+    top: 0;
+    left: 0
+}
+
+.widget_product_search form:before,
+.widget_search form:before {
+    display: none;
+    font: normal normal normal 1em/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    content: "\f002";
+    position: absolute;
+    top: 1em;
+    left: 1em
+}
+
+.widget_archive ul,
+.widget_categories ul,
+.widget_links ul,
+.widget_nav_menu ul,
+.widget_pages ul,
+.widget_recent_comments ul,
+.widget_recent_entries ul {
+    margin: 0
+}
+
+.widget_archive ul li,
+.widget_categories ul li,
+.widget_links ul li,
+.widget_nav_menu ul li,
+.widget_pages ul li,
+.widget_recent_comments ul li,
+.widget_recent_entries ul li {
+    list-style: none;
+    margin-bottom: .6180469716em
+}
+
+.widget_archive ul li:before,
+.widget_categories ul li:before,
+.widget_links ul li:before,
+.widget_nav_menu ul li:before,
+.widget_pages ul li:before,
+.widget_recent_comments ul li:before,
+.widget_recent_entries ul li:before {
+    font-family: FontAwesome;
+    margin-right: .5407911001em;
+    display: none;
+    opacity: .35
+}
+
+.widget_archive ul .sub-menu,
+.widget_categories ul .sub-menu,
+.widget_links ul .sub-menu,
+.widget_nav_menu ul .sub-menu,
+.widget_pages ul .sub-menu,
+.widget_recent_comments ul .sub-menu,
+.widget_recent_entries ul .sub-menu {
+    margin-top: .6180469716em;
+    margin-left: 1.618em
+}
+
+.footer-widgets #wp-calendar td,
+.footer-widgets #wp-calendar th,
+.widget-area #wp-calendar td,
+.widget-area #wp-calendar th {
+    padding: .236em;
+    text-align: center
+}
+
+.widget_pages ul li:before,
+.widget_recent_entries ul li:before {
+    content: "\f0f6"
+}
+
+.widget_pages ul ul.children,
+.widget_recent_entries ul ul.children {
+    margin: .6180469716em 0 0 1.41575em
+}
+
+.widget_categories ul li:before {
+    content: "\f114"
+}
+
+.widget_archive ul li:before,
+.widget_categories ul li.current-cat:before {
+    content: "\f115"
+}
+
+.widget_recent_comments ul li:before {
+    content: "\f0e5"
+}
+
+.widget_nav_menu ul li:before {
+    content: "\f0f6"
+}
+
+.widget_links ul li:before {
+    content: "\f08e"
+}
+
+.widget_rating_filter .wc-layered-nav-rating {
+    margin-bottom: .6180469716em
+}
+
+.widget_rating_filter .wc-layered-nav-rating a {
+    text-decoration: none!important
+}
+
+.widget_rating_filter .wc-layered-nav-rating .star-rating {
+    display: inline-block
+}
+
+.widget-area .widget {
+    font-size: .875em
+}
+
+.widget-area .widget h1.widget-title {
+    font-size: 1.41575em
+}
+
+.widget-area .widget a:not(.button) {
+    font-weight: 400;
+    text-decoration: underline
+}
+
+.widget-area .widget a:not(.button):hover {
+    text-decoration: none
+}
+
+/*------------------------------------*\
+	$WOOCOMMERCE WIDGETS
+\*------------------------------------*/
+
+.woocommerce .widget_layered_nav ul li a,
+.woocommerce .widget_layered_nav ul li span{
+    font-size: 14px;
+}
+
+.woocommerce-product-search, .widget_shopping_cart_content{
+    padding: 10px;
+}
+
+.widget ul.products li.product a,
+.woocommerce-breadcrumb a:hover {
+    text-decoration: none
+}
+
+.widget_layered_nav li:before,
+.widget_product_categories ul li:before {
+    font: normal normal normal 1em/1 FontAwesome;
+    display: none;
+    margin-right: .5407911001em
+}
+
+.product_list_widget {
+    list-style: none;
+    margin-left: 0
+}
+
+.product_list_widget li {
+    padding: 1em 0
+}
+
+.product_list_widget li:after,
+.product_list_widget li:before {
+    content: "";
+    display: table
+}
+
+.product_list_widget li>a,
+.widget_products a,
+.widget_shopping_cart .buttons .button {
+    display: block
+}
+
+.woocommerce ul.product_list_widget li img{
+    width: 80px;
+}
+
+.product_list_widget > li{
+    margin-bottom: 10px !important;
+}
+
+.product_list_widget li img {
+    float: right;
+    max-width: none;
+}
+.product_list_widget li .product-title{
+    font-size: 0.8em;
+    font-weight: normal;
+}
+
+.product_list_widget li > a{
+    font-weight: bold;
+}
+
+.product_list_widget li > .amount{
+    display: block;
+    padding-top: 6px;
+}
+
+.product_list_widget a:hover {
+    color: #7dc876
+}
+
+.widget_shopping_cart .product_list_widget {
+    margin-bottom: 0
+}
+
+.widget_shopping_cart .product_list_widget li {
+    padding-left: 2em;
+    position: relative
+}
+
+.widget_shopping_cart .product_list_widget li a.remove {
+    position: absolute;
+    top: 1em;
+    left: 0;
+    opacity: 1
+}
+
+.widget_shopping_cart p.buttons,
+.widget_shopping_cart p.total {
+    padding: 1em 0;
+    margin: 0;
+    text-align: center
+}
+
+.widget_shopping_cart .buttons .button:nth-child(odd) {
+    margin-bottom: .6180469716em
+}
+
+.widget_product_categories ul {
+    margin: 0
+}
+
+.widget_product_categories ul li {
+    list-style: none;
+    margin-bottom: .6180469716em
+}
+
+.widget_product_categories ul li:before {
+    display: none;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    opacity: .25;
+    content: "\f114"
+}
+
+.widget_product_categories ul li.current-cat:before {
+    display: none;
+    content: "\f115"
+}
+
+.widget_product_categories .children {
+    margin-top: .6180469716em;
+    margin-left: 1.618em
+}
+
+.site-header .widget_shopping_cart li,
+.site-header .widget_shopping_cart p.buttons,
+.site-header .widget_shopping_cart p.total {
+    padding-left: 1.41575em;
+    padding-right: 1.41575em
+}
+
+.widget_layered_nav li {
+    margin-bottom: .6180469716em
+}
+
+.widget_layered_nav li:before {
+    display: none;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    opacity: .35;
+    content: "\f0c8"
+}
+
+.widget_layered_nav_filters ul li.chosen a:before,
+a.remove:before {
+    display: none;
+    font: normal normal normal 1em/1 FontAwesome;
+    color: #e2401c;
+    text-rendering: auto;
+    -moz-osx-font-smoothing: grayscale
+}
+
+.widget_layered_nav .chosen:before {
+    display: none;
+    content: "\f14a"
+}
+
+.widget_layered_nav_filters ul li.chosen a:before {
+    display: none;
+    font-size: inherit;
+    -webkit-font-smoothing: antialiased;
+    content: "\f00d";
+    margin-right: .5407911001em
+}
+
+.widget.woocommerce li .count {
+    font-size: 1em;
+    float: right
+}
+
+.price_slider_wrapper{ padding: 10px; }
+
+.price_slider {
+    margin-bottom: 1em
+}
+
+.price_slider_amount {
+    text-align: right;
+    line-height: 2.4em
+}
+
+.price_slider_amount .button {
+    float: left
+}
+
+.ui-slider {
+    position: relative;
+    text-align: left
+}
+
+.woocommerce .widget_price_filter .ui-slider .ui-slider-handle {
+    position: absolute;
+    z-index: 2;
+    width: 1em;
+    height: 1em;
+    cursor: ew-resize;
+    outline: 0;
+    background: #7dc876;
+    box-sizing: border-box;
+    margin-top: -.25em;
+    opacity: 1;
+    border-radius: 1em
+}
+
+.woocommerce .widget_price_filter .ui-slider .ui-slider-handle:last-child {
+    margin-left: -1em
+}
+
+.woocommerce .widget_price_filter .ui-slider .ui-slider-handle.ui-state-active,
+.woocommerce .widget_price_filter .ui-slider .ui-slider-handle:hover {
+    box-shadow: 0 0 0 .236em rgba(0, 0, 0, .1)
+}
+
+.woocommerce .widget_price_filter .ui-slider .ui-slider-range {
+    position: absolute;
+    z-index: 1;
+    font-size: .7em;
+    display: block;
+    border: 0;
+    background: #7dc876;
+    border-radius: 1em
+}
+
+table.cart .product-quantity .minus,
+table.cart .product-quantity .plus,
+table.cart .product-thumbnail:before {
+    display: none
+}
+
+.woocommerce .widget_price_filter .price_slider_wrapper .ui-widget-content {
+    background: rgba(0, 0, 0, .1);
+    border-radius: 1em
+}
+
+.woocommerce .widget_price_filter .ui-slider-horizontal {
+    height: .5em
+}
+
+.woocommerce .widget_price_filter .ui-slider-horizontal .ui-slider-range {
+    top: 0;
+    height: 100%
+}
+
+.woocommerce .widget_price_filter .ui-slider-horizontal .ui-slider-range-min {
+    left: -1px
+}
+
+.woocommerce .widget_price_filter .ui-slider-horizontal .ui-slider-range-max {
+    right: -1px
+}
 
 /**
  * Default Comment Form Styles
@@ -280,4 +791,4 @@ blockquote.right {}
 .comment-form-url { }
 .comment-form-comment { } 
 .form-allowed-tags { } 
-.form-submit
+.form-submit{}
