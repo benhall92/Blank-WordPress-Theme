@@ -16,6 +16,8 @@ function theme_name_scripts() {
 
 	wp_enqueue_script('JQuery', '//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js', array(), '1.11.3', false);
 
+	wp_enqueue_script('dekoAPI', '//secure.dekopay.com/js_api/FinanceDetails.js.php?api_key=da1db925b0f82c1fbaa889bc5c376ded', array(), false, false);
+
 	wp_enqueue_script('fontAwesome', '//use.fontawesome.com/3608d41ab9.js', array(), '1.11.3', false);
 
 	wp_enqueue_script( 'jquery-ui-core' );

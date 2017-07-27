@@ -505,7 +505,7 @@ input, button, select, textarea{
 
 	&.nav--primary{
 		position: relative;
-		z-index: 9999;
+		z-index: 8009;
 		background-color: #FFF;
 		border-bottom: #EEE solid 1px;
 
@@ -565,7 +565,7 @@ input, button, select, textarea{
 
 	&.nav--mobile{
 		display: none;
-		z-index: 9999;
+		z-index: 8009;
 		background-color: #FFF;
 
 		&.is--open{

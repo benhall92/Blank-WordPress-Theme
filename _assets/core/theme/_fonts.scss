@@ -30,3 +30,22 @@
 	color: $secondary-red;
 	font-family: $primary-font;
 }
+
+%secondary-header-font{
+	font-size: 14px;
+	color: $primary-gray;
+
+	@media only screen and (max-width: 640px){
+		color: #FFF;
+		text-align: center;
+	}
+}
+
+%secondary-header-icon{
+	line-height: inherit;
+	color: $primary-gray;
+
+	@media only screen and (max-width: 640px){
+		color: #FFF;
+	}
+}

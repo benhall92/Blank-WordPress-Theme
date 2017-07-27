@@ -33,9 +33,11 @@ $terms = $terms = get_terms(array(
  
  	<?php foreach ( $terms as $term ):
 
- 		$term_id 	= $term->ID;
+ 		// var_dump($term);
+
+ 		$term_id 	= $term->term_id;
  		$term_name 	= $term->name;
- 		$term_acf 	= $term_name.'_'.$term_id;
+ 		$term_acf 	= 'term_'.$term_id;
  		$image 		= get_field('term_image', $term_acf); ?>
 
         <div class="grid__item float-left" data-desk="desk-4-12" data-lap="lap-1/3" data-palm="palm-2-4">
@@ -48,7 +50,7 @@ $terms = $terms = get_terms(array(
 					
 				<?php endif ?>
 
-				<h2><?php echo $term_name; ?></h2>
+				<p><?php echo $term_name; ?></p>
 
 			</a>
 

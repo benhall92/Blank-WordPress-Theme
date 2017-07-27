@@ -47,7 +47,7 @@ function my_range() {
 	register_taxonomy( 'range', array( 'product' ), $args );
 }
 
-add_action( 'init', 'my_range' );
+// add_action( 'init', 'my_range' );
 
 /* 
  * This function allows for pagination for custom

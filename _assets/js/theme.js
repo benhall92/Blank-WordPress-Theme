@@ -25,6 +25,40 @@ jQuery(document).ready(function($) {
 		});
 	}
 
+	Interpolate.unitConvert = function () {
+
+		var $unitConvert = $('#unitConvert');
+
+		if( $unitConvert.length == 0 ){
+
+			return;
+		}
+
+		var $metricUnits 	= $('#metricUnits'),
+			$imperialUnits 	= $('#imperialUnits');
+
+		$unitConvert.on('click', function () {
+
+			if( $metricUnits.is(':visible') ){
+
+				$metricUnits.hide(0, function () {
+
+					$imperialUnits.show()
+				});
+			
+			}else if( $imperialUnits.is(':visible') ){
+
+				$imperialUnits.hide(0, function () {
+
+					$metricUnits.show()
+				});
+
+			}
+
+		});	
+
+	}
+
 	Interpolate.closeMobileMenu = function () {
 
 		var $trigger 	= $('#menuCloseTrigger'),
@@ -217,6 +251,7 @@ jQuery(document).ready(function($) {
 		self.megaMenuOverlay();
 		self.wishlistReverse();
 		self.searchTrigger();
+		self.unitConvert();
 	}
 
 	// Once the window has loaded, run the following functions.
