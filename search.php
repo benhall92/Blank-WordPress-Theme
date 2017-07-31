@@ -42,7 +42,7 @@ get_header(); ?>
 
 			</div>
 
-			<?php while ( have_posts() ) : the_post();?>
+			<?php while ( have_posts() ) : the_post(); ?>
 
 				<!-- GRID -->
 				<div class="grid [ margin margin--small margin--bottom ]">

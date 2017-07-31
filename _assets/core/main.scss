@@ -776,36 +776,6 @@
 			@include btn-primary();
 			padding: 10px;
 		}
-
-		.yith-wcwl-add-to-wishlist{
-			margin-top: 0;
-
-			.button{
-
-				i{ margin-right: 0px; }
-			}
-
-			.yith-wcwl-add-button{ text-align: right; }
-
-			.yith-wcwl-wishlistexistsbrowse{
-				
-				&.show{
-
-					> a{ display: none; }
-
-					.feedback{
-						display: block;
-						margin-bottom: 20px;
-						padding-top: 10px;
-						line-height: 1.2;
-					}
-				}
-			}
-
-			.feedback{
-				text-align: right;
-			}
-		}
 	}
 
 	div.product{
@@ -844,6 +814,36 @@
 			h3{ margin-bottom: 0; }
 
 			p{ font-weight: bold; }
+		}
+	}
+
+	.yith-wcwl-add-to-wishlist{
+		margin-top: 0;
+
+		.button{
+
+			i{ margin-right: 0px; }
+		}
+
+		.yith-wcwl-add-button{ text-align: right; }
+
+		.yith-wcwl-wishlistexistsbrowse{
+			
+			&.show{
+
+				> a{ display: none; }
+
+				.feedback{
+					display: block;
+					margin-bottom: 20px;
+					padding-top: 10px;
+					line-height: 1.2;
+				}
+			}
+		}
+
+		.feedback{
+			text-align: right;
 		}
 	}
 

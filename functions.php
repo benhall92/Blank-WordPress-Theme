@@ -194,6 +194,9 @@ add_action( 'after_setup_theme', 'woocommerce_support' );
 
 function woocommerce_support() {
     add_theme_support( 'woocommerce' );
+    add_theme_support( 'wc-product-gallery-zoom' );
+    add_theme_support( 'wc-product-gallery-lightbox' );
+    add_theme_support( 'wc-product-gallery-slider' );
 }
 
 /*
@@ -221,6 +224,15 @@ function wc_in_stock_func( $atts ) {
     }
 }
 
+
+add_action( 'pre_get_posts', 'wpse223576_search_woocommerce_only' );
+
+function wpse223576_search_woocommerce_only( $query ) {
+  if( ! is_admin() && is_search() && $query->is_main_query() ) {
+    $query->set( 'post_type', 'product' );
+  }
+}
+
 /*
  * Create a shortcode to display the product SKU
  */
@@ -235,6 +247,30 @@ function inter_show_sku() {
 
     echo '<p class="product-single__code info__small">'.__('ProductCode', 'oakworld').': '.$sku.'</p>';
 }
+
+/**
+ * Hide the "In stock" message on product page.
+ *
+ * @param string $html
+ * @param string $text
+ * @param WC_Product $product
+ * @return string
+ */
+function my_wc_hide_in_stock_message( $availability, $_product ) {
+    
+    // Change In Stock Text
+    // if ( $_product->is_in_stock() ) {
+    //     $availability['availability'] = __('Available!', 'woocommerce');
+    // }
+    // // Change Out of Stock Text
+    // if ( ! $_product->is_in_stock() ) {
+    //     $availability['availability'] = __('Sold Out', 'woocommerce');
+    // }
+
+    return "";
+}
+
+add_filter( 'woocommerce_get_availability', 'my_wc_hide_in_stock_message', 10, 3 );
 
 /*
  * Create an options page for ACF
@@ -309,30 +345,6 @@ function calculate_monthly_payment () {
 
         </script>';
 }
-
-// add_filter('template_include', 'team_set_template');
-
-// function team_set_template( $template ){
-   
-//     if(is_tax('range')) :
-
-//         $taxonomy = 'range';
-//         $term = get_query_var($taxonomy);
-//         $prod_term = get_terms($taxonomy, 'slug='.$term.''); 
-//         $term_slug = $prod_term[0]->slug;
-//         $t_id = $prod_term[0]->term_id;
-//         $term_meta = get_option( "taxonomy_$t_id" );
-//         $term_meta['range_access_pin'];  
-
-//         wc_get_template( 'archive-product.php' );
-
-//     else :
-
-//         wc_get_template( 'archive-product.php' );
-
-//     endif; 
-
-// }
 
 function woo_add_custom_general_fields_save( $post_id ){
 
@@ -588,7 +600,7 @@ add_action('init','alter_woo_hooks');
 
 function alter_woo_hooks (){
 
-    add_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_thumbnails', 2 );
+    // add_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_thumbnails', 2 );
 
     add_action( 'woocommerce_single_product_summary', 'wc_in_stock_func', 61 );
 
@@ -605,11 +617,13 @@ function alter_woo_hooks (){
 
     add_action('woocommerce_single_product_summary', 'inter_show_sku', 6);
 
-    remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta', 20);
+    remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20);
 
     remove_action( 'woocommerce_after_shop_loop_item_title', 'woocommerce_template_loop_product_link_close', 5);
 
     remove_action('woocommerce_before_shop_loop_item', 'woocommerce_template_single_excerpt');
+
+    remove_action('woocommerce_before_single_product_summary', 'woocommerce_show_product_sale_flash', 10);
 
     remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);
 

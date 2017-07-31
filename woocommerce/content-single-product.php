@@ -286,7 +286,11 @@ $product_ID = get_the_ID(); ?>
 
 			<div class="grid__item float-left">
 
+				<div class="margin margin--medium margin--bottom">
+
 				<?php comments_template(); ?>
+
+				</div>
 				
 			</div>
 			
