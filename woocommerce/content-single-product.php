@@ -33,6 +33,8 @@ $product_ID = get_the_ID(); ?>
 	 	echo get_the_password_form();
 	 	return;
 	 }
+
+	$wistia_embed_code = get_field('wistia_embed_code');
 ?>
 <!-- CONTENT SINGLE PRODUCT -->
 <div id="product-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -183,104 +185,40 @@ $product_ID = get_the_ID(); ?>
 
 				</div>
 
-				<?php the_content(); ?>
-				
-			</div>
+				<div class="product__description">
 
-			<div class="grid__item float-left" data-desk="desk-6-12">
-
-				<?php woocommerce_template_single_excerpt(); ?>
-
-			</div>
-			
-		</div>
-
-		<?php
-			/**
-			 * woocommerce_after_single_product_summary hook.
-			 *
-			 * @hooked woocommerce_output_product_data_tabs - 10
-			 * @hooked woocommerce_upsell_display - 15
-			 * @hooked woocommerce_output_related_products - 20
-			 */
-			do_action( 'woocommerce_after_single_product_summary' );
-		?>
-
-		<?php
-
-		$terms = get_the_terms($post->ID, 'product_brand');
-
-		$the_query = new WP_Query(array(
-			'post_type'			=> 'product',
-			'posts_per_page' 	=> 4,
-			'tax_query' 		=> array(
-				'relation' => 'AND',
-				array(
-					'taxonomy' => 'product_brand',
-					'field' => 'id',
-					'terms' => array( $terms[0]->term_id ),
-					'operator' => 'IN'
-				)
-			)
-		));
-
-		$term_link = get_term_link($terms[0]->term_id);
-		
-		// The Loop
-		if ( $the_query->have_posts() ) : ?>
-
-		<div class="margin margin--medium margin--top-bottom">
-
-			<div class="grid">
-
-				<div class="grid__item float-left">
-
-					<?php //$terms = get_the_terms($post->ID, 'product_brand'); ?>
-
-					<div class="align align--center">
-
-						<div class="padding padding--small padding--bottom">
-
-							<h3><?php echo __('View the ', 'oakworld') . $terms[0]->name.__(' range', 'oakworld'); ?></h3>
-
-							<p>
-								<strong><?php echo __('Products available ', 'oakworld').$terms[0]->count; ?></strong>
-							</p>
-
-						</div>
-
-					</div>
-
-					<div class="woocommerce related">
-
-						<ul class="products">
-
-							<?php while ( $the_query->have_posts() ) : $the_query->the_post();
-
-								get_template_part('woocommerce/content-product');
-							  
-							// Do Stuff
-							endwhile; ?>
-
-						</ul>
-
-					</div>
+					<?php the_content(); ?>
 
 				</div>
 				
 			</div>
 
-			<div class="align align--center">
+			<?php if ($wistia_embed_code): ?>
 
-				<a class="btn btn--tertiary btn--medium" href="<?php echo $term_link; ?>"><?php _e('Shop full range', 'oakworld'); ?></a>
-				
+			<div class="grid__item float-left" data-desk="desk-6-12">
+
+				<?php
+
+				$embed_code = wp_oembed_get( $wistia_embed_code );
+
+				echo $embed_code; ?>
+
 			</div>
 
+			<?php endif ?>
+			
 		</div>
 
-		<?php endif;
+		<?php
 
-		wp_reset_postdata(); ?>	
+		/**
+		 * woocommerce_after_single_product_summary hook.
+		 *
+		 * @hooked woocommerce_output_product_data_tabs - 10
+		 * @hooked woocommerce_upsell_display - 15
+		 * @hooked woocommerce_output_related_products - 20
+		 */
+		do_action( 'woocommerce_after_single_product_summary' ); ?>
 
 		<div class="grid">
 

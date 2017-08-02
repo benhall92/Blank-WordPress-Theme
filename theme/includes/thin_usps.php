@@ -13,7 +13,8 @@
 				$usp_type 	= get_sub_field('usp_type');
 				$usp_text 	= get_sub_field('usp_text');
 				$usp_icon 	= get_sub_field('usp_icon');
-				$usp_image 	= get_sub_field('usp_image'); ?>
+				$usp_image 	= get_sub_field('usp_image');
+				$usp_link 	= get_sub_field('usp_link'); ?>
 
 			<?php if ($header_usp_count == 1): ?>
 
@@ -31,25 +32,37 @@
 
 				<div class="thin-usp">
 
-				<?php if ($usp_type == 'icon-text' ): ?>
+					<?php if ($usp_link != ""): ?>
 
-					<?php if ($usp_icon != '' ): ?>
-				
-					<i class="<?php echo $usp_icon; ?>" aria-hidden="true"></i>
+						<a href="<?php echo $usp_link; ?>">
+						
+					<?php endif ?>
 
-					<?php endif; ?>
+					<?php if ($usp_type == 'icon-text' ): ?>
 
-					<?php output_text($usp_text, 'p'); ?>
+						<?php if ($usp_icon != '' ): ?>
+					
+						<i class="<?php echo $usp_icon; ?>" aria-hidden="true"></i>
 
-				<?php else: ?>
+						<?php endif; ?>
 
-					<?php if ($usp_image['url'] != '' || $usp_image['url'] != false ): ?>
+						<?php output_text($usp_text, 'p'); ?>
 
-						<img src="<?php echo $usp_image['url']; ?>" alt="<?php echo $usp_image['alt']; ?>">
+					<?php else: ?>
 
-					<?php endif; ?>
+						<?php if ($usp_image['url'] != '' || $usp_image['url'] != false ): ?>
 
-				<?php endif ?>
+							<img src="<?php echo $usp_image['url']; ?>" alt="<?php echo $usp_image['alt']; ?>">
+
+						<?php endif; ?>
+
+					<?php endif ?>
+
+					<?php if ($usp_link != ""): ?>
+
+						</a>
+						
+					<?php endif ?>
 
 				</div>
 				

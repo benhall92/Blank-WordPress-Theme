@@ -39,6 +39,20 @@ add_theme_support( "post-thumbnails" );
 add_theme_support( "custom-header" );
 add_theme_support( "custom-background" );
 
+/*
+ * Declare support for Woocommerce
+ */
+
+add_action( 'after_setup_theme', 'woocommerce_support' );
+
+function woocommerce_support() {
+    add_theme_support( 'woocommerce' );
+    add_theme_support( 'wc-product-gallery-zoom' );
+    add_theme_support( 'wc-product-gallery-lightbox' );
+    add_theme_support( 'wc-product-gallery-slider' );
+}
+
+
 /**
  * Add Markup Schema to WP Nav
  *
@@ -160,14 +174,6 @@ if (!function_exists('loop_columns')) {
     }
 }
 
-// function woo_related_products_limit() {
-    
-//     global $product;
-    
-//     $args['posts_per_page'] = 4;
-//     return $args;
-// }
-
 /**
  * WooCommerce Extra Feature
  * --------------------------
@@ -177,27 +183,22 @@ if (!function_exists('loop_columns')) {
  *
  */ 
 
-add_filter( 'woocommerce_output_related_products_args', 'jk_related_products_args', 20 );
-
-function jk_related_products_args( $args ) {
-
-    $args['posts_per_page'] = 4; // 4 related products
-    $args['columns'] = 4; // arranged in 4 columns
+function woo_related_products_limit() {
+  global $product;
+    
+    $args['posts_per_page'] = 4;
     return $args;
 }
 
-/*
- * Declare support for Woocommerce
- */
+function related_products_args( $args ) {
 
-add_action( 'after_setup_theme', 'woocommerce_support' );
+    $args['posts_per_page'] = 4; // 4 related products
+    $args['columns'] = 4; // arranged in 4 columns
 
-function woocommerce_support() {
-    add_theme_support( 'woocommerce' );
-    add_theme_support( 'wc-product-gallery-zoom' );
-    add_theme_support( 'wc-product-gallery-lightbox' );
-    add_theme_support( 'wc-product-gallery-slider' );
+    return $args;
 }
+
+
 
 /*
  * This function outputs a line of text
@@ -219,7 +220,7 @@ function wc_in_stock_func( $atts ) {
     } else {
        
         echo '<div class="stock">
-                    <span class="stock__availability stock__availability--out"><i>X</i> '. _e( 'Out of Stock', 'oakworld' ). '</span>
+                    <span class="stock__availability stock__availability--out"><i>X</i> '. __( 'Out of Stock', 'oakworld' ). '</span>
                 </div>';
     }
 }
@@ -257,15 +258,6 @@ function inter_show_sku() {
  * @return string
  */
 function my_wc_hide_in_stock_message( $availability, $_product ) {
-    
-    // Change In Stock Text
-    // if ( $_product->is_in_stock() ) {
-    //     $availability['availability'] = __('Available!', 'woocommerce');
-    // }
-    // // Change Out of Stock Text
-    // if ( ! $_product->is_in_stock() ) {
-    //     $availability['availability'] = __('Sold Out', 'woocommerce');
-    // }
 
     return "";
 }
@@ -287,14 +279,39 @@ if( function_exists('acf_add_options_page') ) {
     ));
 }
 
+add_action( 'init', function () {
+    wp_oembed_add_provider( '/https?:\/\/(.+)?(wistia\.com|wi\.st)\/(medias|embed)\/.*/', 'http://fast.wistia.net/oembed', true );
+});
 
-// Display Fields
-add_action( 'woocommerce_product_options_general_product_data', 'woo_add_custom_general_fields' );
+/**
+ * Remove the sort by newness option when sorting products
+ * Options: menu_order, popularity, rating, date, price, price-desc
+ **/
+ 
+function wc_catalog_orderby( $orderby ) {
+    unset($orderby["date"]);
 
-// Save Fields
-add_action( 'woocommerce_process_product_meta', 'woo_add_custom_general_fields_save' );
+    return $orderby;
+}
 
-function woo_add_custom_general_fields() {
+add_filter( "woocommerce_catalog_orderby", "wc_catalog_orderby", 20 );
+
+
+/**
+ * Change the sale text that appears in the 
+ * green circle on products that are on sale.
+**/
+
+function wc_custom_replace_sale_text( $html ) {
+
+    return str_replace( __( 'Sale!', 'oakworld' ), __( 'Save!', 'oakworld' ), $html );
+}
+
+add_filter( 'woocommerce_sale_flash', 'wc_custom_replace_sale_text' );
+
+
+
+function woo_add_custom_shipping_fields() {
 
     global $woocommerce, $post;
   
@@ -321,6 +338,9 @@ function woo_add_custom_general_fields() {
     echo '</div>';   
 }
 
+// Display Fields
+add_action( 'woocommerce_product_options_general_product_data', 'woo_add_custom_shipping_fields' );
+
 
 function calculate_monthly_payment () {
 
@@ -346,7 +366,7 @@ function calculate_monthly_payment () {
         </script>';
 }
 
-function woo_add_custom_general_fields_save( $post_id ){
+function woo_add_custom_shipping_fields_save( $post_id ){
 
     // Text Field
     $_metric_dimensions = $_POST['_metric_dimensions'];
@@ -362,9 +382,11 @@ function woo_add_custom_general_fields_save( $post_id ){
     if( !empty( $_imperial_dimensions ) ){
 
         update_post_meta( $post_id, '_imperial_dimensions', esc_attr( $_imperial_dimensions ) );
-    }
-        
+    }       
 }
+
+// Save Fields
+add_action( 'woocommerce_process_product_meta', 'woo_add_custom_shipping_fields_save' );
 
 /*
  * SRC: https://blog.webguysaz.com/2013/10/31/add-woocommerce-view-all-pagination-option-to-product-listings/
@@ -600,7 +622,7 @@ add_action('init','alter_woo_hooks');
 
 function alter_woo_hooks (){
 
-    // add_action( 'woocommerce_before_single_product_summary', 'woocommerce_show_product_thumbnails', 2 );
+    remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20);
 
     add_action( 'woocommerce_single_product_summary', 'wc_in_stock_func', 61 );
 
@@ -631,9 +653,14 @@ function alter_woo_hooks (){
 
     remove_action('woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15);
 
-    remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20);
+    // remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20);
 
-    remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20);
+    add_filter( 'woocommerce_output_related_products_args', 'related_products_args' );
+
+    // add_filter('woocommerce_product_related_posts_relate_by_category', '__return_false');
+
+    // add_filter('woocommerce_product_related_posts_relate_by_tag', '__return_false');
+
 }
 
 
