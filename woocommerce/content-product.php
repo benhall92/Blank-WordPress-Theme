@@ -96,7 +96,6 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 
 	<?php
 	
-	// do_action( 'woocommerce_after_shop_loop_item_title' );
 	/**
 	 * woocommerce_after_shop_loop_item hook.
 	 *
@@ -106,4 +105,5 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	do_action( 'woocommerce_after_shop_loop_item' ); ?>
 
 	</div>
+
 </li>

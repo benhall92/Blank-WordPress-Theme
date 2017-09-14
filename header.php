@@ -11,32 +11,67 @@
 ?>
 
 <!DOCTYPE html>
-<html <?php language_attributes(); ?>>
+<html <?php language_attributes(); ?> >
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
+
+	<!--<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">-->
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title><?php wp_title(); ?></title>
 
 <?php
+
 /* Always have wp_head() just before the closing </head>
  * tag of your theme, or you will break many plugins, which
  * generally use this hook to add elements to <head> such
  * as styles, scripts, and meta tags.
  */
-wp_head(); ?>
 
-<?php
+wp_head();
 
 $company_telephone_number 	= get_field('company_telephone_number', 'option');
 $contact_page_link 			= get_field('contact_page_link', 'option');
 $my_account_page_link 		= get_field('my_account_page_link', 'option');
 $header_logo 				= get_field('header_logo', 'option');
+$favicon 					= get_field('favicon', 'option'); ?>
 
-?>
+<link rel="shortcut icon" href="<?php echo $favicon['url']; ?>" />
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MBXFJH6');</script>
+<!-- End Google Tag Manager -->
+
+<!-- TrustBox script --> 
+<script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script> 
+<!-- End Trustbox script -->
 
 </head>
 
 <body <?php body_class(); ?>>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBXFJH6"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!-- BEGIN Convert 365 Monitor. -->
+<script type="text/javascript">
+var LHCChatOptions = {};
+LHCChatOptions.opt = {widget_height:400,widget_width:360,popup_height:520,popup_width:500};
+(function() {
+var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+var referrer = (document.referrer) ? encodeURIComponent(document.referrer.substr(document.referrer.indexOf('://')+1)) : '';
+var location  = (document.location) ? encodeURIComponent(window.location.href.substring(window.location.protocol.length)) : '';
+po.src = 'https://webchatco.com/index.php/chat/getstatus/(click)/internal/(position)/bottom_right/(ma)/br/(hide_offline)/true/(top)/350/(units)/pixels/(department)/7/(theme)/7?r='+referrer+'&l='+location;
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+})();
+</script>
+<!-- END Convert 365 Monitor. -->
+
 
 <div class="mega-menu-overlay"></div>
 
@@ -173,8 +208,8 @@ $header_logo 				= get_field('header_logo', 'option');
 							<div class="">
 
 								<a class="btn btn--primary btn--small basket basket--primary" href="<?php echo WC()->cart->get_cart_url(); ?>"><i class=" fa fa-shopping-basket" aria-hidden="true"></i>
-									(<?php echo  WC()->cart->get_cart_contents_count(); ?>)
-									<span><?php _e('CHECKOUT', 'oakworld'); ?></span></a>
+									(<?php echo  WC()->cart->get_cart_contents_count(); ?>)<span>
+									<?php _e('BASKET', 'oakworld'); ?></span></a>
 
 							</div>
 

@@ -40,6 +40,29 @@
 	}
 }
 
+@mixin btn-secondary{
+	background-color: #FFF;
+	color: $primary-gray;
+	border-color: $primary-gray;
+
+	&:hover{
+		color: #FFF;
+		background-color: $primary-gray;
+	}
+}
+
+@mixin btn-tertiary{
+	background-color: $primary-gray;
+	color: #FFF;
+	border-color: $primary-gray;
+
+	&:hover{
+		color: #FFF;
+		background-color: $primary-gray;
+	}
+}
+
+
 @mixin select-x-small($important:null){
 	padding: 0.3em 3rem 0.3em 0.5em $important;
 	font-size: 14px $important;

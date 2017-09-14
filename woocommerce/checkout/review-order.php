@@ -56,11 +56,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 										<?php echo apply_filters( 'woocommerce_checkout_cart_item_quantity', ' <strong class="product-quantity">' . sprintf( '&times; %s', $cart_item['quantity'] ) . '</strong>', $cart_item, $cart_item_key ); ?>
 										<?php echo WC()->cart->get_item_data( $cart_item ); ?>
 
-										<?php if ($delivery_time != "" ): ?>
-
-											<?php echo '<p>'.__('Delivery within: ','oakworld').$delivery_time.'</p>'; ?>
-											
-										<?php endif ?>
+										<?php do_shortcode('[delivery_time id='.$product_ID.']' ); ?>
 
 										<?php if ($sku != "" ): ?>
 

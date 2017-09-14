@@ -15,8 +15,6 @@ jQuery(document).ready(function($) {
 
 		$trigger.on('click', function () {
 
-			console.log('clicked');
-
 			if( $( $(window).outerWidth() <= 1024) ){
 
 				$('#mobileMenu').toggle();
@@ -56,6 +54,11 @@ jQuery(document).ready(function($) {
 			}
 
 		});	
+
+	}
+
+	Interpolate.lazyloadImages = function () {
+
 
 	}
 
@@ -209,11 +212,7 @@ jQuery(document).ready(function($) {
 
 			if( $(e.target).closest('.mega-menu__list').length ){
 
-				console.log('one');
-
 				if( $('.mega-menu-overlay').is(':hidden') ){
-
-					console.log('two');
 
 					$('.mega-menu-overlay').show();
 				}
@@ -257,9 +256,7 @@ jQuery(document).ready(function($) {
 	// Once the window has loaded, run the following functions.
 	$(window).on('load', function() {
 
-		console.log('loaded');
 		// Interpolate.addMobileMargin();
-
 	});
 
 	// Once the window has been resized, run the following functions.

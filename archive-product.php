@@ -76,7 +76,7 @@ get_header( 'shop' ); ?>
 
 	<div class="grid">
 		
-		<div class="grid__item float-left" data-desk="desk-3-12" data-lap="lap-3-8">
+		<div class="grid__item float-left" data-desk="desk-3-12" data-lap="lap-2-8">
 
 			<aside>
 
@@ -110,7 +110,7 @@ get_header( 'shop' ); ?>
 
 		</div>
 
-		<div class="grid__item float-left" data-desk="desk-9-12" data-lap="lap-5-8">
+		<div class="grid__item float-left" data-desk="desk-9-12" data-lap="lap-6-8">
 
 		<?php if ( have_posts() ) : ?>
 

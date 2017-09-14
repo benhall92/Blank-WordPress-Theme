@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <!-- CUSTOM CART -->
 
-<?php get_template_part('theme/includes/page_before');
+<?php //get_template_part('theme/includes/page_before');
 
 wc_print_notices();
 do_action( 'woocommerce_before_cart' ); ?>
@@ -88,6 +88,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 								if ( $_product->backorders_require_notification() && $_product->is_on_backorder( $cart_item['quantity'] ) ) {
 									echo '<p class="backorder_notification">' . esc_html__( 'Available on backorder', 'woocommerce' ) . '</p>';
 								}
+								do_shortcode('[delivery_time id='.$product_id.']' );
 							?>
 						</td>
 

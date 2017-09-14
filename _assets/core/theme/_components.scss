@@ -759,14 +759,25 @@ input, button, select, textarea{
 			}
 		}
 
-		.images{
+		div.images{
 			display: block;
 			float: none !important;
 			width: 100% !important;
 
 			img{
-				width: 100% !important;
-				height: auto !important;
+				width: auto !important;
+				// height: 100% !important;
+			}
+
+			.flex-control-thumbs{
+
+				li{
+					width: 80px;
+					height: 80px;
+					padding: 5px;
+					margin: 2px;
+					border: 1px solid #EEE;
+				}
 			}
 		}
 
@@ -978,9 +989,23 @@ input, button, select, textarea{
 		border-top: none;
 		font-size: $base-font;
 
+		@media only screen and (max-width: 640px){
+			padding: 1em 2em 1em 2em;
+		}
+
 		&:before{ display: none; }
 
 		a{ color: #FFF; }
+
+		.button{
+			color: $primary-gray;
+
+			@media only screen and (max-width: 640px){
+				width: 100%;
+				display: block;
+				margin-bottom: 10px;
+			}
+		}
 	}
 
 	.woocommerce-info{
@@ -999,6 +1024,27 @@ input, button, select, textarea{
 		border-left: 10px solid $primary-red;
 		background-color: $tertiary-red;
 		color: #FFF;
+	}
+
+	.woocommerce-Reviews{
+
+		span{
+			font-size: $base-font;
+			@extend %base-font;
+		}
+	}
+
+	.price, .product-price{
+
+		del{
+			text-decoration: line-through;
+		}
+	}
+
+	.star-rating{
+		font-family: star !important;
+
+		span{ font-family: star !important; }
 	}
 }
 

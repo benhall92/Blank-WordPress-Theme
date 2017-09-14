@@ -1,5 +1,18 @@
 <?php
 
+/*
+ * Declare support for Woocommerce
+ */
+
+add_action( 'after_setup_theme', 'woocommerce_support' );
+
+function woocommerce_support() {
+    add_theme_support( 'woocommerce' );
+    add_theme_support( 'wc-product-gallery-zoom' );
+    add_theme_support( 'wc-product-gallery-lightbox' );
+    add_theme_support( 'wc-product-gallery-slider' );
+}
+
 // Include the common funtions that may/may not be used
 include 'theme/functions/common.php';
 
@@ -39,18 +52,10 @@ add_theme_support( "post-thumbnails" );
 add_theme_support( "custom-header" );
 add_theme_support( "custom-background" );
 
-/*
- * Declare support for Woocommerce
- */
-
-add_action( 'after_setup_theme', 'woocommerce_support' );
-
-function woocommerce_support() {
-    add_theme_support( 'woocommerce' );
-    add_theme_support( 'wc-product-gallery-zoom' );
-    add_theme_support( 'wc-product-gallery-lightbox' );
-    add_theme_support( 'wc-product-gallery-slider' );
-}
+/**
+ * Prevent WordPress reducing Image quality
+**/ 
+add_filter( 'jpeg_quality', create_function( '', 'return 100;' ) );
 
 
 /**
@@ -210,7 +215,7 @@ function wc_in_stock_func( $atts ) {
 
     global $product;
     
-    if ( $product->is_in_stock() ) {
+    if ( $product->get_stock_quantity() > 0 ) {
 
         echo '<div class="stock">
                 <span class="stock__availability stock__availability--in"><i class="fa fa-check" aria-hidden="true"></i> '. __('In Stock', 'oakworld').'
@@ -219,9 +224,10 @@ function wc_in_stock_func( $atts ) {
 
     } else {
        
-        echo '<div class="stock">
-                    <span class="stock__availability stock__availability--out"><i>X</i> '. __( 'Out of Stock', 'oakworld' ). '</span>
-                </div>';
+        // echo '<div class="stock">
+                    // <span class="stock__availability stock__availability--out"><i>X</i> '. __( 'Out of Stock', 'oakworld' ). '</span>
+                // </div>';
+        echo '';
     }
 }
 
@@ -304,7 +310,11 @@ add_filter( "woocommerce_catalog_orderby", "wc_catalog_orderby", 20 );
 
 function wc_custom_replace_sale_text( $html ) {
 
-    return str_replace( __( 'Sale!', 'oakworld' ), __( 'Save!', 'oakworld' ), $html );
+    $_product = wc_get_product( get_the_id() );
+
+    $diff = $_product->get_regular_price() - $_product->get_sale_price();
+
+    return str_replace( __( 'Sale!', 'oakworld' ), __( 'Save<br/>'.wc_price($diff), 'oakworld' ), $html );
 }
 
 add_filter( 'woocommerce_sale_flash', 'wc_custom_replace_sale_text' );
@@ -347,23 +357,10 @@ function calculate_monthly_payment () {
     $product = wc_get_product(get_the_ID());
     $thePrice = $product->get_price(); //will give raw price
 
-    if( $thePrice < 300 ){
-        return;
-    }
-
-    $payment = $thePrice * 10 * 0.029500558690308046665887436009;
+    $payment = number_format($thePrice * 0.029500558690308046665887436009 * 0.5, 2);
     $currency = get_woocommerce_currency_symbol();
 
-    echo '<p class="product-finance">'.__('Finance from: ', 'oakworld').'<strong>'.$currency.'<span id="monthlyPayment-'.get_the_ID().'"></span></strong>'. __(' per month*', 'oakworld').'</p>';
-
-    echo '<script type="text/javascript">
-
-            var my_fd_obj = new FinanceDetails("ONIB48-19.9", '.$thePrice.', 10, 0),
-                $monthly = my_fd_obj.m_inst.toFixed(2);
-
-            $("#monthlyPayment-'.get_the_ID().'").text($monthly);
-
-        </script>';
+    echo '<p class="product-finance">'.__('Finance from: ', 'oakworld').'<strong>'.$currency.'<span id="monthlyPayment-'.get_the_ID().'">'.$payment.'</span></strong>'. __(' per month*', 'oakworld').'</p>';
 }
 
 function woo_add_custom_shipping_fields_save( $post_id ){
@@ -440,7 +437,28 @@ function woocomerce_brands_filter( $args ) {
         'add_new_item'      => __( 'Add New Range', 'oakworld' ),
         'new_item_name'     => __( 'New Range Name', 'oakworld' )
     );
+
     return $args;
+}
+
+
+/**
+ * Show product weight on order form
+ **/
+add_action( 'woocommerce_after_order_itemmeta', 'show_fields_on_order_form', 10, 3 );
+
+function show_fields_on_order_form( $item_id, $item, $product ){
+
+    if( $item->get_type() != 'line_item' ) return;
+
+    $weight = $product->get_weight();
+
+    if( $weight != "" ){
+
+        echo '<hr/>';
+        echo '<div>'.__('Weight: ', 'oakworld'). $weight . get_option('woocommerce_weight_unit') .'</div>';
+        echo '<hr/>';
+    }
 }
 
 
@@ -490,11 +508,11 @@ function action_woocommerce_after_add_to_cart_button(  ) {
     }); 	  	   	 	
     </script>  
          							   	 	
-    <table style='width: 50% !important;' border='0'>        	
+    <table style='width: 100%;' border='0'>        	
     <tr>        	
-    <!--<td style='vertical-align: middle !important; width:130px !important; padding:1px;'><img src='https://www.finance-calculator.co.uk/popuplogo.php?imegaid=$imegaID' style='max-width:100px !important;'/></td>-->
+    <!--<td style='border-right: 0; vertical-align: middle !important; width:130px !important; padding:1px;'><img src='https://www.finance-calculator.co.uk/popuplogo.php?imegaid=$imegaID' style='max-width:100px !important;'/></td>-->
         	
-    <td style='text-align: left !important;'><iframe id='calculatorFrame' src='https://www.finance-calculator.co.uk/fcalculator_top.php?imegaid=$imegaID&orderamount=$imegaprice' scrolling='no' frameborder='0' height='30px' style='vertical-align: inherit !important;'>You need a Frames Capable browser to view this content.</iframe> 
+    <td style='text-align: left !important;'><iframe id='calculatorFrame' src='https://www.finance-calculator.co.uk/fcalculator_top.php?imegaid=$imegaID&orderamount=$imegaprice' scrolling='no' frameborder='0' height='30px' style='width: 100%; vertical-align: inherit !important;'>You need a Frames Capable browser to view this content.</iframe> 
            	
     <a class='imegacalc action primary' data-fancybox-type='iframe' href='https://www.finance-calculator.co.uk/fcalculator.php?imegaid=$imegaID&orderamount=$imegaprice'>  	"); 	 	
 
@@ -547,7 +565,7 @@ function action_woocommerce_after_cart(  ) {
 
     if(WC()->cart->total >= $min_order && WC()->cart->total <= $max_order){ 	
     echo (" 	
-    <img src='https://www.finance-calculator.co.uk/images/more.png' style='padding-left:10px'/>       	
+    <img src='https://www.finance-calculator.co.uk/images/more.png'/>       	
     "); }; 
     	 	
     echo(" 	
@@ -584,9 +602,9 @@ function action_woocommerce_thankyou_bacs($order_id){
     <script src='https://www.finance-calculator.co.uk/js/iframeResizer.min.js'></script> 
     	
     <script> 	   
-    $(function () { 		   
-    $('#calculatorFrame').iFrameResize({log:true}); 	   
-    }); 	
+        $(function () { 		   
+            $('#calculatorFrame').iFrameResize({log:true}); 	   
+        }); 	
     </script> 		 	
 
     <iframe id='calculatorFrame' src='https://www.finance-calculator.co.uk/fcheckout.php?imegaid=$imegaID&orderid=".$order->get_order_number()."&orderamount=".$order->get_total()."&firstname=".$address['first_name']."&lastname=".$address['last_name']."&housenum=".$housenum."&street=".$address['address_1']."&postcode=".$address['postcode']."&email=".$address['email']."&telephone=".$address['phone']."&orderdesc=".$orderdesc."' style='width:100%; min-width:400px; height:600px;' scrolling='no' frameborder='0'>You need a Frames Capable browser to view this content.</iframe> 	
@@ -653,20 +671,16 @@ function alter_woo_hooks (){
 
     remove_action('woocommerce_after_single_product_summary', 'woocommerce_upsell_display', 15);
 
-    // remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20);
-
     add_filter( 'woocommerce_output_related_products_args', 'related_products_args' );
-
-    // add_filter('woocommerce_product_related_posts_relate_by_category', '__return_false');
-
-    // add_filter('woocommerce_product_related_posts_relate_by_tag', '__return_false');
-
 }
 
+/**
+ * ADD YITH CODE
+ **/
 
-function check_if_working () {
+add_filter('yith_wccos_add_all_custom_order_status_actions', '__return_true');
 
-    echo "Hello";
-}
-
-?>
+delete_post_meta_by_key( 'inter_imperial_dimensions' );
+delete_post_meta_by_key( 'inter_metric_dimensions' );
+delete_post_meta_by_key( 'metric_dimensions' );
+delete_post_meta_by_key( 'imperial_dimensions' ); ?>
