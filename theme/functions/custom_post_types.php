@@ -11,18 +11,18 @@
 function prefix_register_name() {
 
 	$labels = array(
-		'name'                => __( 'Plural Name', 'text-domain' ),
-		'singular_name'       => __( 'Singular Name', 'text-domain' ),
-		'add_new'             => _x( 'Add New Singular Name', 'text-domain', 'text-domain' ),
-		'add_new_item'        => __( 'Add New Singular Name', 'text-domain' ),
-		'edit_item'           => __( 'Edit Singular Name', 'text-domain' ),
-		'new_item'            => __( 'New Singular Name', 'text-domain' ),
-		'view_item'           => __( 'View Singular Name', 'text-domain' ),
-		'search_items'        => __( 'Search Plural Name', 'text-domain' ),
-		'not_found'           => __( 'No Plural Name found', 'text-domain' ),
-		'not_found_in_trash'  => __( 'No Plural Name found in Trash', 'text-domain' ),
-		'parent_item_colon'   => __( 'Parent Singular Name:', 'text-domain' ),
-		'menu_name'           => __( 'Plural Name', 'text-domain' ),
+		'name'                => __( 'Plural Name', 'oakworld' ),
+		'singular_name'       => __( 'Singular Name', 'oakworld' ),
+		'add_new'             => _x( 'Add New Singular Name', 'oakworld', 'oakworld' ),
+		'add_new_item'        => __( 'Add New Singular Name', 'oakworld' ),
+		'edit_item'           => __( 'Edit Singular Name', 'oakworld' ),
+		'new_item'            => __( 'New Singular Name', 'oakworld' ),
+		'view_item'           => __( 'View Singular Name', 'oakworld' ),
+		'search_items'        => __( 'Search Plural Name', 'oakworld' ),
+		'not_found'           => __( 'No Plural Name found', 'oakworld' ),
+		'not_found_in_trash'  => __( 'No Plural Name found in Trash', 'oakworld' ),
+		'parent_item_colon'   => __( 'Parent Singular Name:', 'oakworld' ),
+		'menu_name'           => __( 'Plural Name', 'oakworld' ),
 	);
 
 	$args = array(

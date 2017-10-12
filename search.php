@@ -98,9 +98,9 @@ get_header(); ?>
 			<?php 
 			// Previous/next page navigation.
 			the_posts_pagination( array(
-				'prev_text'          => __( 'Previous page', 'interpolate-restaurant-theme' ),
-				'next_text'          => __( 'Next page', 'interpolate-restaurant-theme' ),
-				'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'interpolate-restaurant-theme' ) . ' </span>',
+				'prev_text'          => __( 'Previous page', 'oakworld' ),
+				'next_text'          => __( 'Next page', 'oakworld' ),
+				'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'oakworld' ) . ' </span>',
 			) );
 
 		else : ?>
