@@ -40,8 +40,7 @@ if ( $wp_query->max_num_pages <= 1 )
 ?>
 
 <nav class="woocommerce-pagination">
-<<<<<<< HEAD
-	
+
 	<?php if (is_paged()) : ?> 
 
 		<?php $url = get_nopaging_url(); ?>
@@ -54,13 +53,6 @@ if ( $wp_query->max_num_pages <= 1 )
 
 	<?php endif; ?>
 
-=======
-	<?php if (is_paged()) : ?> 
-	  <div class="float-left"><a class="view-all" href="../../?view=all">View All</a></div>
-	<?php else: ?>
-	  <div class="float-left"><a class="view-all" href="?view=all">View All</a></div>
-	<?php endif; ?>
->>>>>>> 83e6d5ad49301160313cfe670a17c605ee24338f
 	<?php
 		echo paginate_links( apply_filters( 'woocommerce_pagination_args', array(
 			'base'         => esc_url_raw( str_replace( 999999999, '%#%', remove_query_arg( 'add-to-cart', get_pagenum_link( 999999999, false ) ) ) ),
