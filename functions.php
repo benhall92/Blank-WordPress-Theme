@@ -180,13 +180,11 @@ function oakworld_mega_menu() {
 
 add_action( 'widgets_init', 'oakworld_mega_menu' );
 
-
-
 /*
  * Change number of products per page
  */
 
-add_filter( 'loop_shop_per_page', 'new_loop_shop_per_page', 10 );
+// add_filter( 'loop_shop_per_page', 'new_loop_shop_per_page', 20 );
 
 function new_loop_shop_per_page( $cols ) {
     // $cols contains the current number of products per page based on the value stored on Options -> Reading
@@ -227,12 +225,6 @@ if (!function_exists('loop_columns')) {
  *
  */ 
 
-function woo_related_products_limit() {
-  global $product;
-    
-    $args['posts_per_page'] = 4;
-    return $args;
-}
 
 function related_products_args( $args ) {
 
@@ -428,24 +420,49 @@ add_action( 'woocommerce_process_product_meta', 'woo_add_custom_shipping_fields_
  * SRC: https://blog.webguysaz.com/2013/10/31/add-woocommerce-view-all-pagination-option-to-product-listings/
  */
 
-add_filter('loop_shop_per_page', 'wg_view_all_products');
+add_filter('loop_shop_per_page', 'wg_view_all_products', 20);
 
 function wg_view_all_products(){
 
+    $cols;
+
     if( !isset($_GET['view']) ){
+         
         return;
     }
 
-    if($_GET['view'] === 'all'){
-        return '9999';
+    if( $_GET['view'] === 'all'){
+        
+        $cols = '9999';
+
     }else{
-        return '12';
+
+        $cols = '12';
     }
 
-    if($_GET['view'] === 'all'){
-        return '9999';
-    }
+    return $cols;
 }
+
+/**
+ * Get the current page url without /page/3/
+ *
+ * Ths is used for the View All functionality on archive pages.
+ *
+ * src: https://wordpress.stackexchange.com/questions/247730/get-current-url-permalink-without-page-pagenum
+ * 
+ **/
+
+function get_nopaging_url() {
+
+    $current_url =  $_SERVER['REQUEST_URI'];
+
+    $pattern = '/page\\/[0-9]+\\//i';
+    $nopaging_url = preg_replace($pattern, '', $current_url);
+
+    return  $nopaging_url;
+
+}
+
 
 // Position Yoast Seo at bottom of page after ACF
 // Uncomment this if you want to enable it
