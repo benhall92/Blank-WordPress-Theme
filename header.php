@@ -29,6 +29,7 @@
 
 wp_head();
 
+<<<<<<< HEAD
 $vars = get_defined_vars();
 //echo "<pre>"; print_r($vars); echo "</pre>"; 
 
@@ -39,6 +40,8 @@ $guid = $vars['posts'][0]->post_name;
 //echo "<pre> guid: ".$guid."</pre>";
 
 //if($guid == 'checkout') echo "winner!";
+=======
+>>>>>>> 83e6d5ad49301160313cfe670a17c605ee24338f
 $company_telephone_number 	= get_field('company_telephone_number', 'option');
 $contact_page_link 			= get_field('contact_page_link', 'option');
 $my_account_page_link 		= get_field('my_account_page_link', 'option');
@@ -47,15 +50,23 @@ $favicon 					= get_field('favicon', 'option'); ?>
 
 <link rel="shortcut icon" href="<?php echo $favicon['url']; ?>" />
 
+<<<<<<< HEAD
 <?php if($guid != 'checkout') { ?>
 <!-- HEADER Google Tag Manager -->
+=======
+<!-- Google Tag Manager -->
+>>>>>>> 83e6d5ad49301160313cfe670a17c605ee24338f
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-MBXFJH6');</script>
+<<<<<<< HEAD
 <!-- HEADER End Google Tag Manager -->
 <?php } ?>
+=======
+<!-- End Google Tag Manager -->
+>>>>>>> 83e6d5ad49301160313cfe670a17c605ee24338f
 
 <!-- TrustBox script --> 
 <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script> 
@@ -65,6 +76,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <body <?php body_class(); ?>>
 
+<<<<<<< HEAD
 <?php if($guid != 'checkout') { ?>
 <!-- HEADER Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBXFJH6"
@@ -74,6 +86,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- BEGIN Convert 365 Monitor. -->
 <!--<script type="text/javascript">
+=======
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MBXFJH6"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!-- BEGIN Convert 365 Monitor. -->
+<script type="text/javascript">
+>>>>>>> 83e6d5ad49301160313cfe670a17c605ee24338f
 var LHCChatOptions = {};
 LHCChatOptions.opt = {widget_height:400,widget_width:360,popup_height:520,popup_width:500};
 (function() {
@@ -83,7 +104,11 @@ var location  = (document.location) ? encodeURIComponent(window.location.href.su
 po.src = 'https://webchatco.com/index.php/chat/getstatus/(click)/internal/(position)/bottom_right/(ma)/br/(hide_offline)/true/(top)/350/(units)/pixels/(department)/7/(theme)/7?r='+referrer+'&l='+location;
 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 })();
+<<<<<<< HEAD
 </script>-->
+=======
+</script>
+>>>>>>> 83e6d5ad49301160313cfe670a17c605ee24338f
 <!-- END Convert 365 Monitor. -->
 
 
@@ -130,6 +155,11 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po
 						<?php endif ?>
 						
 					</div>
+<<<<<<< HEAD
+=======
+
+					
+>>>>>>> 83e6d5ad49301160313cfe670a17c605ee24338f
 					
 				</div>
 				
@@ -178,15 +208,25 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po
 							<span class="icon__text">Search</span>
 						</span>
 
+<<<<<<< HEAD
 						<span data-lap="lap-hidden" class="header__icon" id="mobileMenuTrigger">
+=======
+						<span class="header__icon" id="mobileMenuTrigger">
+>>>>>>> 83e6d5ad49301160313cfe670a17c605ee24338f
 							<i class="fa fa-bars" aria-hidden="true"></i>
 							<span class="icon__text">Menu</span>
 						</span>
 
 						<span class="header__icon">
+<<<<<<< HEAD
 							<a class="mobile-cart-count" href="<?php echo WC()->cart->get_cart_url(); ?>">
 								<i class="fa fa-shopping-basket" aria-hidden="true"></i>
 								(<?php echo WC()->cart->get_cart_contents_count(); ?>)
+=======
+							<a href="<?php echo WC()->cart->get_cart_url(); ?>">
+								<i class="fa fa-shopping-basket" aria-hidden="true"></i>
+								(<?php echo  WC()->cart->get_cart_contents_count(); ?>)
+>>>>>>> 83e6d5ad49301160313cfe670a17c605ee24338f
 								<span class="icon__text">Basket</span>
 							</a>
 						</span>
@@ -219,10 +259,15 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po
 
 							<div class="">
 
+<<<<<<< HEAD
 								<?php //global $woocommerce; ?>
 
 								<a class="cart-count btn btn--primary btn--small basket basket--primary" href="<?php echo WC()->cart->get_cart_url(); ?>"><i class=" fa fa-shopping-basket" aria-hidden="true"></i>
 									(<?php echo WC()->cart->get_cart_contents_count(); ?>)<span>
+=======
+								<a class="btn btn--primary btn--small basket basket--primary" href="<?php echo WC()->cart->get_cart_url(); ?>"><i class=" fa fa-shopping-basket" aria-hidden="true"></i>
+									(<?php echo  WC()->cart->get_cart_contents_count(); ?>)<span>
+>>>>>>> 83e6d5ad49301160313cfe670a17c605ee24338f
 									<?php _e('BASKET', 'oakworld'); ?></span></a>
 
 							</div>

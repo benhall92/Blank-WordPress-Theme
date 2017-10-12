@@ -107,6 +107,94 @@ $instagram 		= get_field('instagram', 'option'); ?>
 		
 	</div>
 	
+<<<<<<< HEAD
+=======
+</div>
+
+<div class="grid">
+
+	<div class="wrapper">
+	
+		<div class="grid__item float-left" data-desk="desk-8-12" data-lap="lap-5-8">
+
+		<?php if (have_rows('footer_payment_options', 'option')): ?>
+
+			<div class="[ padding padding--x-small padding--all ]">
+
+				<ul class="list list--inline payment-options">
+
+				<?php while(have_rows('footer_payment_options', 'option')): the_row(); ?>
+
+					<?php $payment_option = get_sub_field('payment_option'); ?>
+
+					<li>
+						<img src="<?php echo $payment_option['url']; ?>" alt="<?php echo $payment_option['alt']; ?>">
+					</li>
+
+				<?php endwhile; ?>
+
+				</ul>
+
+			</div>
+
+		<?php endif ?>
+
+		</div>
+
+		<div class="grid__item float-left" data-desk="desk-4-12" data-lap="lap-3-8">
+
+			<div class="[ padding padding--x-small padding--all ]">
+
+				<ul class="list list--inline list--right social-icons">
+
+					<?php if ($facebook != ""): ?>
+
+					<li>
+
+						<a href="<?php echo $facebook; ?>">
+							<i class="icon icon--medium icon--secondary btn btn--tertiary fa fa-facebook" aria-hidden="true"></i>
+						</a>
+						
+					</li>
+
+					<?php endif ?>
+
+					<?php if ($twitter != ""): ?>
+
+					<li>
+
+						<a href="<?php echo $twitter; ?>">
+							<i class="icon icon--medium icon--secondary btn btn--tertiary fa fa-twitter" aria-hidden="true"></i>
+						</a>
+						
+					</li>
+
+					<?php endif ?>
+
+					<?php if ($instagram != ""): ?>
+
+					<li>
+
+						<a href="<?php echo $instagram; ?>">
+							<i class="icon icon--medium icon--secondary btn btn--tertiary fa fa-instagram" aria-hidden="true"></i>
+						</a>
+						
+					</li>
+
+					<?php endif ?>
+					
+				</ul>
+
+			</div>
+
+		</dov>
+
+	</div>
+
+</div>
+
+<!-- PAGE -->
+>>>>>>> 83e6d5ad49301160313cfe670a17c605ee24338f
 </div>
 
 <div class="grid">

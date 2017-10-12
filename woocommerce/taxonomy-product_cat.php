@@ -17,5 +17,8 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 83e6d5ad49301160313cfe670a17c605ee24338f
 wc_get_template( 'archive-product.php' );

@@ -19,6 +19,19 @@ function oakworld_scripts() {
 	// wp_enqueue_script('lazyload', get_template_directory_uri().'/_assets/js/lazyload.jquery.js', array('JQuery'), false, false);
 
 	wp_enqueue_script('dekoAPI', '//secure.dekopay.com/js_api/FinanceDetails.js.php?api_key=da1db925b0f82c1fbaa889bc5c376ded', array(), false, false);
+<<<<<<< HEAD
+=======
+
+	wp_enqueue_script('fontAwesome', '//use.fontawesome.com/3608d41ab9.js', array(), '1.11.3', false);
+
+	wp_enqueue_script( 'jquery-ui-core' );
+
+	wp_enqueue_script('themeJS', get_template_directory_uri().'/_assets/js/theme.js', array(), false, true);
+
+	wp_enqueue_style('theme-style', get_stylesheet_uri(), false, '1');
+
+	wp_enqueue_style( 'Roboto', "//fonts.googleapis.com/css?family=Roboto:300,400,500", array(), '1', false );
+>>>>>>> 83e6d5ad49301160313cfe670a17c605ee24338f
 
 	wp_enqueue_script( 'jquery-ui-core' );
 

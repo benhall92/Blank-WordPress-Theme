@@ -31,7 +31,11 @@ else:
 
 		<section class="related products">
 
+<<<<<<< HEAD
 			<h2><?php esc_html_e( 'Related products', 'oakworld' ); ?></h2>
+=======
+			<h2><?php esc_html_e( 'Related products', 'woocommerce' ); ?></h2>
+>>>>>>> 83e6d5ad49301160313cfe670a17c605ee24338f
 
 			<?php woocommerce_product_loop_start(); ?>
 

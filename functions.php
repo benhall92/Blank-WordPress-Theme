@@ -1,5 +1,18 @@
 <?php
 
+/*
+ * Declare support for Woocommerce
+ */
+
+add_action( 'after_setup_theme', 'woocommerce_support' );
+
+function woocommerce_support() {
+    add_theme_support( 'woocommerce' );
+    add_theme_support( 'wc-product-gallery-zoom' );
+    add_theme_support( 'wc-product-gallery-lightbox' );
+    add_theme_support( 'wc-product-gallery-slider' );
+}
+
 // Include the common funtions that may/may not be used
 include 'theme/functions/common.php';
 
@@ -55,7 +68,9 @@ add_theme_support( "custom-background" );
 /**
  * Prevent WordPress reducing Image quality
 **/ 
+
 // add_filter( 'jpeg_quality', create_function( '', 'return 100;' ) );
+add_filter( 'jpeg_quality', create_function( '', 'return 100;' ) );
 
 
 /**
@@ -180,6 +195,7 @@ function oakworld_mega_menu() {
 
 add_action( 'widgets_init', 'oakworld_mega_menu' );
 
+
 /*
  * Change number of products per page
  */
@@ -224,7 +240,6 @@ if (!function_exists('loop_columns')) {
  * Set your own value for 'posts_per_page'
  *
  */ 
-
 
 function related_products_args( $args ) {
 
@@ -283,7 +298,10 @@ function inter_show_sku() {
 
     if( $sku == '' || !$sku ){ return; }
 
+
     echo '<p class="product-single__code info__small">'.__('Product Code', 'oakworld').': '.$sku.'</p>';
+
+    echo '<p class="product-single__code info__small">'.__('ProductCode', 'oakworld').': '.$sku.'</p>';
 }
 
 /**
@@ -463,6 +481,24 @@ function get_nopaging_url() {
 
 }
 
+add_filter('loop_shop_per_page', 'wg_view_all_products');
+
+function wg_view_all_products(){
+
+    if( !isset($_GET['view']) ){
+        return;
+    }
+
+    if($_GET['view'] === 'all'){
+        return '9999';
+    }else{
+        return '12';
+    }
+
+    if($_GET['view'] === 'all'){
+        return '9999';
+    }
+}
 
 // Position Yoast Seo at bottom of page after ACF
 // Uncomment this if you want to enable it
@@ -574,9 +610,7 @@ function action_woocommerce_after_add_to_cart_button(  ) {
 
     if($imegaprice >= $min_order && $imegaprice <= $max_order){ 
     	
-        echo (" 	
-        <img src='https://www.finance-calculator.co.uk/images/more.png' />       	
-        ");
+        echo ("<img src='https://www.finance-calculator.co.uk/images/more.png' /><img src='https://www.finance-calculator.co.uk/images/more.png' style='padding-left:10px'/>");
 
     }; 	 
      
@@ -648,6 +682,8 @@ $post_meta = get_post_meta($order->id , '_payment_method', true);
 	$payment_method = $post_meta;
     //echo "<pre>".$payment_method."</pre>";
 	
+    $orderdesc = ""; 	 	
+
     foreach ($order->get_items() as $key => $lineItem) { 	
         $orderdesc.=$lineItem['name'].' (productid: '.$lineItem['product_id'].') '; 	
     }  	
@@ -655,8 +691,12 @@ $post_meta = get_post_meta($order->id , '_payment_method', true);
     $orderdesc.=" TOTAL ORDER VALUE: £".$order->get_total(); 	
     $address=$order->get_address('billing'); 	
     $street = $address['address_1']; 	
+
     $housenum = substr($street, 0, strpos($street, ' '));  
 	$orderid=  preg_replace("/[^0-9\.]/", "", $order->get_order_number());
+
+    $housenum = substr($street, 0, strpos($street, ' '));   
+
      
     echo("<!-- imegamedia start --> 	
     <!-- JQUERY ONLY NEEDED IF NOT ALREADY CALLED IN YOUR TEMPLATE --> 
@@ -669,7 +709,10 @@ $post_meta = get_post_meta($order->id , '_payment_method', true);
         }); 	
     </script> 		 	
 
+<<<<<<< HEAD
     <iframe id='calculatorFrame' src='https://www.finance-calculator.co.uk/fcheckout.php?imegaid=$imegaID&orderid=".$orderid."&orderamount=".$order->get_total()."&firstname=".$address['first_name']."&lastname=".$address['last_name']."&housenum=".$housenum."&street=".$address['address_1']."&postcode=".$address['postcode']."&email=".$address['email']."&telephone=".$address['phone']."&orderdesc=".$orderdesc."' style='width:100%; min-width:400px; height:600px;' scrolling='no' frameborder='0'>You need a Frames Capable browser to view this content.</iframe> 	
+
+    <iframe id='calculatorFrame' src='https://www.finance-calculator.co.uk/fcheckout.php?imegaid=$imegaID&orderid=".$order->get_order_number()."&orderamount=".$order->get_total()."&firstname=".$address['first_name']."&lastname=".$address['last_name']."&housenum=".$housenum."&street=".$address['address_1']."&postcode=".$address['postcode']."&email=".$address['email']."&telephone=".$address['phone']."&orderdesc=".$orderdesc."' style='width:100%; min-width:400px; height:600px;' scrolling='no' frameborder='0'>You need a Frames Capable browser to view this content.</iframe> 	
 
     <!-- imegamedia end -->");	  
 
@@ -779,7 +822,10 @@ function alter_woo_hooks (){
 
     remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20);
 
+
     add_action( 'woocommerce_single_product_summary', 'wc_in_stock_func', 11 );
+
+    add_action( 'woocommerce_single_product_summary', 'wc_in_stock_func', 61 );
 
     /**
      * Product Loop
@@ -794,7 +840,10 @@ function alter_woo_hooks (){
     * Single Product
     **/
 
+
     // add_action('woocommerce_single_product_summary', 'inter_show_sku', 6);
+
+    add_action('woocommerce_single_product_summary', 'inter_show_sku', 6);
 
     remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20);
 
@@ -893,9 +942,9 @@ function disable_emojicons_tinymce( $plugins ) {
 
 add_filter( 'emoji_svg_url', '__return_false' );
 
-
 /**
  * ADD YITH CODE
  **/
+
 
 add_filter('yith_wccos_add_all_custom_order_status_actions', '__return_true'); ?>

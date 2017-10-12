@@ -1,5 +1,9 @@
 <!-- NAVIGATION -->
+<<<<<<< HEAD
 <div id="navigation" data-palm="palm-hidden">
+=======
+<div id="navigation" data-lap="lap-hidden" data-palm="palm-hidden">
+>>>>>>> 83e6d5ad49301160313cfe670a17c605ee24338f
 
 	<!-- NAVIGATION WITH SCHEMA -->
 	<nav class="nav nav--primary" itemscope itemtype="http://schema.org/SiteNavigationElement">
@@ -24,10 +28,17 @@
                         	<div class="list__wrap">
                             
 	                            <a href="<?php echo $item->url; ?>"><?php echo $item->title; ?></a>
+<<<<<<< HEAD
 
                                 <?php if ( in_array( 'has-mega-menu', $item->classes ) ) : ?>
 
 	                           		<i data-lap="lap-hidden" data-mega="<?php echo 'mega-menu-widget-area-' . $item->ID; ?>" class="fa fa-chevron-down" aria-hidden="true"></i>
+=======
+	                            
+	                            <?php if ( is_active_sidebar( 'mega-menu-widget-area-' . $item->ID ) ) : ?>
+
+	                           		<i class="fa fa-chevron-down" aria-hidden="true"></i>
+>>>>>>> 83e6d5ad49301160313cfe670a17c605ee24338f
 									
 							<!-- list wrapp -->
 	                        </div>
@@ -50,8 +61,11 @@
 
                            <?php else: ?>
 
+<<<<<<< HEAD
                            <!-- comment two -->
 
+=======
+>>>>>>> 83e6d5ad49301160313cfe670a17c605ee24338f
 	                        <!-- list wrapp -->
 	                        </div>
 	                            

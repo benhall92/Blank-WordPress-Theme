@@ -40,8 +40,11 @@ $terms = $terms = get_terms(array(
  		$term_acf 	= 'term_'.$term_id;
  		$image 		= get_field('term_image', $term_acf); ?>
 
+<<<<<<< HEAD
  		<?php echo $term_acf; ?>
 
+=======
+>>>>>>> 83e6d5ad49301160313cfe670a17c605ee24338f
         <div class="grid__item float-left" data-desk="desk-4-12" data-lap="lap-1/3" data-palm="palm-2-4">
 
 			<a href="<?php echo get_term_link($term); ?>">

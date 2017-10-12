@@ -83,7 +83,11 @@ get_header( 'shop' ); ?>
 				<div id="sidebarMobileTrigger" class="clearfix sidebar-mobile-trigger" data-desk="desk-hidden" data-lap="lap-hidden">
 		
 					<p class="float-left">
+<<<<<<< HEAD
 						<?php echo _e('Menu', 'oakworld'); ?>
+=======
+						<?php echo _e('Menu', 'blank-theme'); ?>
+>>>>>>> 83e6d5ad49301160313cfe670a17c605ee24338f
 					</p>
 
 					<span class="float-right">
