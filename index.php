@@ -10,8 +10,8 @@
  * Learn more: {@link https://codex.wordpress.org/Template_Hierarchy}
  *
  * @package WordPress
- * @subpackage Blank
- * @since Blank 1.0
+ * @subpackage Oakworld
+ * @since Oakworld 1.0
  */
 ?>
 
@@ -27,11 +27,16 @@ if ( have_posts() ) :
 
 	while ( have_posts() ) : the_post(); 
 
+		get_template_part('theme/includes/page_before');
+
 		the_content();
+
+		get_template_part('theme/includes/page_after');
 	
 	endwhile; // end while
 
 endif; // end if
 
-get_sidebar();
+// get_sidebar();
+
 get_footer(); ?>

@@ -1,0 +1,8 @@
+[25-Sep-2017 07:48:21 CST6CDT] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/sofaital/public_html/wp-content/themes/oakworld/index.php:22
+Stack trace:
+#0 {main}
+  thrown in /home/sofaital/public_html/wp-content/themes/oakworld/index.php on line 22
+[25-Sep-2017 07:48:21 CST6CDT] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/sofaital/public_html/wp-content/themes/oakworld/index.php:22
+Stack trace:
+#0 {main}
+  thrown in /home/sofaital/public_html/wp-content/themes/oakworld/index.php on line 22

@@ -15,14 +15,51 @@ jQuery(document).ready(function($) {
 
 		$trigger.on('click', function () {
 
-			console.log('clicked');
-
 			if( $( $(window).outerWidth() <= 1024) ){
 
-				$('#mobileMenu').toggleClass('is--open');
+				$('#mobileMenu').toggle();
 			}
 
 		});
+	}
+
+	Interpolate.unitConvert = function () {
+
+		var $unitConvert = $('#unitConvert');
+
+		if( $unitConvert.length == 0 ){
+
+			return;
+		}
+
+		var $metricUnits 	= $('#metricUnits'),
+			$imperialUnits 	= $('#imperialUnits');
+
+		$unitConvert.on('click', function () {
+
+			if( $metricUnits.is(':visible') ){
+
+				$metricUnits.hide(0, function () {
+
+					$imperialUnits.show()
+				});
+			
+			}else if( $imperialUnits.is(':visible') ){
+
+				$imperialUnits.hide(0, function () {
+
+					$metricUnits.show()
+				});
+
+			}
+
+		});	
+
+	}
+
+	Interpolate.lazyloadImages = function () {
+
+
 	}
 
 	Interpolate.closeMobileMenu = function () {
@@ -132,7 +169,7 @@ jQuery(document).ready(function($) {
 
 	Interpolate.checkSidebar = function () {
 
-		var $sidebar = $('.sidebar__widget-list');
+		var $sidebar = $('.sidebar');
 
 		if( $(window).outerWidth() > 640 ){
 
@@ -150,6 +187,64 @@ jQuery(document).ready(function($) {
 		}
 	}
 
+	Interpolate.searchTrigger = function () {
+
+		var $searchTrigger 	= $('#searchTrigger'),
+			$mobileSearch 	= $('.mobile-search');
+
+		$searchTrigger.on('click', function () {
+
+			$mobileSearch.toggle();
+		});
+
+	};
+
+	Interpolate.megaMenuOverlay = function () {
+
+			var $li = $('.mega-menu > li');
+
+			$li.mouseenter( function (e) {
+
+				if( $(window).outerWidth() >= 1025 ){
+
+					if( !$(this).hasClass('has-mega-menu') ){
+
+						return;
+					}
+
+					if( $(e.target).closest('.mega-menu__list').length ){
+
+						if( $('.mega-menu-overlay').is(':hidden') ){
+
+							$('.mega-menu-overlay').show();
+						}
+					}
+				}
+
+			}).mouseleave( function (e) {
+
+				if( $(window).outerWidth() >= 1025 ){
+
+					$('.mega-menu-overlay').hide();
+
+				}
+
+			});
+		}
+
+	Interpolate.wishlistReverse = function () {
+
+		var $addWishList = $('.add_to_wishlist');
+
+		$addWishList.each(function () {
+
+			var $this 		= $(this),
+				$loading 	= $this.next('.ajax-loading');
+
+			$loading.insertBefore($this);
+		});
+	}
+
 	// Run necessary functions here
 	Interpolate.init = function () {
 
@@ -159,14 +254,16 @@ jQuery(document).ready(function($) {
 		self.closeMobileMenu();
 		self.mobileMenuTrigger();
 		self.addDropArrows();
+		self.megaMenuOverlay();
+		self.wishlistReverse();
+		self.searchTrigger();
+		self.unitConvert();
 	}
 
 	// Once the window has loaded, run the following functions.
 	$(window).on('load', function() {
 
-		console.log('loaded');
 		// Interpolate.addMobileMargin();
-
 	});
 
 	// Once the window has been resized, run the following functions.

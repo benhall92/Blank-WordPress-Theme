@@ -11,23 +11,23 @@
  * @param array|string  Taxonomy arguments
  * @return null|WP_Error WP_Error if errors, otherwise null.
  */
-function my_taxonomies_name() {
+function my_range() {
 
 	$labels = array(
-		'name'					=> _x( 'Plural Name', 'Taxonomy plural name', 'text-domain' ),
-		'singular_name'			=> _x( 'Singular Name', 'Taxonomy singular name', 'text-domain' ),
-		'search_items'			=> __( 'Search Plural Name', 'text-domain' ),
-		'popular_items'			=> __( 'Popular Plural Name', 'text-domain' ),
-		'all_items'				=> __( 'All Plural Name', 'text-domain' ),
-		'parent_item'			=> __( 'Parent Singular Name', 'text-domain' ),
-		'parent_item_colon'		=> __( 'Parent Singular Name', 'text-domain' ),
-		'edit_item'				=> __( 'Edit Singular Name', 'text-domain' ),
-		'update_item'			=> __( 'Update Singular Name', 'text-domain' ),
-		'add_new_item'			=> __( 'Add New Singular Name', 'text-domain' ),
-		'new_item_name'			=> __( 'New Singular Name Name', 'text-domain' ),
-		'add_or_remove_items'	=> __( 'Add or remove Plural Name', 'text-domain' ),
-		'choose_from_most_used'	=> __( 'Choose from most used text-domain', 'text-domain' ),
-		'menu_name'				=> __( 'Singular Name', 'text-domain' ),
+		'name'					=> _x( 'Ranges', 'Taxonomy plural name', 'oakworld' ),
+		'singular_name'			=> _x( 'Range', 'Taxonomy singular name', 'oakworld' ),
+		'search_items'			=> __( 'Search Ranges', 'oakworld' ),
+		'popular_items'			=> __( 'Popular Ranges', 'oakworld' ),
+		'all_items'				=> __( 'All Ranges', 'oakworld' ),
+		'parent_item'			=> __( 'Parent Range', 'oakworld' ),
+		'parent_item_colon'		=> __( 'Parent Range', 'oakworld' ),
+		'edit_item'				=> __( 'Edit Range', 'oakworld' ),
+		'update_item'			=> __( 'Update Range', 'oakworld' ),
+		'add_new_item'			=> __( 'Add New Range', 'oakworld' ),
+		'new_item_name'			=> __( 'New Range Name', 'oakworld' ),
+		'add_or_remove_items'	=> __( 'Add or remove Ranges', 'oakworld' ),
+		'choose_from_most_used'	=> __( 'Choose from most used oakworld', 'oakworld' ),
+		'menu_name'				=> __( 'Ranges', 'oakworld' ),
 	);
 
 	$args = array(
@@ -44,10 +44,10 @@ function my_taxonomies_name() {
 		'capabilities'      => array(),
 	);
 
-	register_taxonomy( 'taxonomy-slug', array( 'post' ), $args );
+	register_taxonomy( 'range', array( 'product' ), $args );
 }
 
-// add_action( 'init', 'my_taxonomies_name' );
+// add_action( 'init', 'my_range' );
 
 /* 
  * This function allows for pagination for custom

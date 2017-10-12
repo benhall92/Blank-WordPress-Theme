@@ -1,1 +1,51 @@
+%main-nav{
+	text-transform: uppercase;
+	text-decoration: none;
+	font-family: $primary-font;
+	font-size: 16px;
+	color: #FFF;
+}
 
+%font-green{
+	color: $primary-green;
+}
+
+%base-font{
+	color: $primary-gray;
+	font-family: $primary-font;
+	font-weight: 300;
+}
+
+%price-font{
+	color: $primary-green;
+	font-family: $primary-font;
+}
+
+%old-price{
+	color: $primary-gray;
+	font-family: $primary-font;
+}
+
+%sale-font{
+	color: $secondary-red;
+	font-family: $primary-font;
+}
+
+%secondary-header-font{
+	font-size: 14px;
+	color: $primary-gray;
+
+	@media only screen and (max-width: 640px){
+		color: #FFF;
+		text-align: center;
+	}
+}
+
+%secondary-header-icon{
+	line-height: inherit;
+	color: $primary-gray;
+
+	@media only screen and (max-width: 640px){
+		color: #FFF;
+	}
+}

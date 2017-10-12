@@ -12,8 +12,8 @@
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
  * @package WordPress
- * @subpackage Blank
- * @since Blank 1.0
+ * @subpackage Oakworld
+ * @since Oakworld 1.0
  */
 
 get_header(); ?>

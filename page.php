@@ -7,8 +7,8 @@
  * other "pages" on your WordPress site will use a different template.
  *
  * @package WordPress
- * @subpackage Blank
- * @since Blank 1.0
+ * @subpackage Oakworld
+ * @since Oakworld 1.0
  */
 ?>
 
@@ -21,14 +21,18 @@ wp_reset_query();
 
 if ( have_posts() ) :
 
+	get_template_part('theme/includes/page_before');
+
 	while ( have_posts() ) : the_post(); 
 
-		the_content(); ?>
+		the_content();
 	
-	<?php endwhile; // end while
+	endwhile; // end while
+
+	get_template_part('theme/includes/page_after');
 
 endif; // end if
 
-get_sidebar();
+// get_sidebar();
 
 get_footer(); ?>
