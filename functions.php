@@ -1,18 +1,5 @@
 <?php
 
-/*
- * Declare support for Woocommerce
- */
-
-add_action( 'after_setup_theme', 'woocommerce_support' );
-
-function woocommerce_support() {
-    add_theme_support( 'woocommerce' );
-    add_theme_support( 'wc-product-gallery-zoom' );
-    add_theme_support( 'wc-product-gallery-lightbox' );
-    add_theme_support( 'wc-product-gallery-slider' );
-}
-
 // Include the common funtions that may/may not be used
 include 'theme/functions/common.php';
 
@@ -481,24 +468,6 @@ function get_nopaging_url() {
 
 }
 
-add_filter('loop_shop_per_page', 'wg_view_all_products');
-
-function wg_view_all_products(){
-
-    if( !isset($_GET['view']) ){
-        return;
-    }
-
-    if($_GET['view'] === 'all'){
-        return '9999';
-    }else{
-        return '12';
-    }
-
-    if($_GET['view'] === 'all'){
-        return '9999';
-    }
-}
 
 // Position Yoast Seo at bottom of page after ACF
 // Uncomment this if you want to enable it
