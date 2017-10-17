@@ -233,15 +233,7 @@ $post_id = get_the_ID(); ?>
 
 				<div class="grid__item float-left">
 
-<<<<<<< HEAD
 					<?php comments_template(); ?>
-=======
-					<div class="margin margin--medium margin--top-bottom">
-
-					<?php comments_template(); ?>
-
-				</div>
->>>>>>> 83e6d5ad49301160313cfe670a17c605ee24338f
 					
 				</div>
 				

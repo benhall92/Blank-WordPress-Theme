@@ -55,9 +55,7 @@ add_theme_support( "custom-background" );
 /**
  * Prevent WordPress reducing Image quality
 **/ 
-
 // add_filter( 'jpeg_quality', create_function( '', 'return 100;' ) );
-add_filter( 'jpeg_quality', create_function( '', 'return 100;' ) );
 
 
 /**
@@ -183,11 +181,12 @@ function oakworld_mega_menu() {
 add_action( 'widgets_init', 'oakworld_mega_menu' );
 
 
+
 /*
  * Change number of products per page
  */
 
-// add_filter( 'loop_shop_per_page', 'new_loop_shop_per_page', 20 );
+add_filter( 'loop_shop_per_page', 'new_loop_shop_per_page', 10 );
 
 function new_loop_shop_per_page( $cols ) {
     // $cols contains the current number of products per page based on the value stored on Options -> Reading
@@ -227,6 +226,13 @@ if (!function_exists('loop_columns')) {
  * Set your own value for 'posts_per_page'
  *
  */ 
+
+function woo_related_products_limit() {
+  global $product;
+    
+    $args['posts_per_page'] = 4;
+    return $args;
+}
 
 function related_products_args( $args ) {
 
@@ -285,10 +291,7 @@ function inter_show_sku() {
 
     if( $sku == '' || !$sku ){ return; }
 
-
     echo '<p class="product-single__code info__small">'.__('Product Code', 'oakworld').': '.$sku.'</p>';
-
-    echo '<p class="product-single__code info__small">'.__('ProductCode', 'oakworld').': '.$sku.'</p>';
 }
 
 /**
@@ -425,49 +428,24 @@ add_action( 'woocommerce_process_product_meta', 'woo_add_custom_shipping_fields_
  * SRC: https://blog.webguysaz.com/2013/10/31/add-woocommerce-view-all-pagination-option-to-product-listings/
  */
 
-add_filter('loop_shop_per_page', 'wg_view_all_products', 20);
+add_filter('loop_shop_per_page', 'wg_view_all_products');
 
 function wg_view_all_products(){
 
-    $cols;
-
     if( !isset($_GET['view']) ){
-         
         return;
     }
 
-    if( $_GET['view'] === 'all'){
-        
-        $cols = '9999';
-
+    if($_GET['view'] === 'all'){
+        return '9999';
     }else{
-
-        $cols = '12';
+        return '12';
     }
 
-    return $cols;
+    if($_GET['view'] === 'all'){
+        return '9999';
+    }
 }
-
-/**
- * Get the current page url without /page/3/
- *
- * Ths is used for the View All functionality on archive pages.
- *
- * src: https://wordpress.stackexchange.com/questions/247730/get-current-url-permalink-without-page-pagenum
- * 
- **/
-
-function get_nopaging_url() {
-
-    $current_url =  $_SERVER['REQUEST_URI'];
-
-    $pattern = '/page\\/[0-9]+\\//i';
-    $nopaging_url = preg_replace($pattern, '', $current_url);
-
-    return  $nopaging_url;
-
-}
-
 
 // Position Yoast Seo at bottom of page after ACF
 // Uncomment this if you want to enable it
@@ -579,7 +557,9 @@ function action_woocommerce_after_add_to_cart_button(  ) {
 
     if($imegaprice >= $min_order && $imegaprice <= $max_order){ 
     	
-        echo ("<img src='https://www.finance-calculator.co.uk/images/more.png' /><img src='https://www.finance-calculator.co.uk/images/more.png' style='padding-left:10px'/>");
+        echo (" 	
+        <img src='https://www.finance-calculator.co.uk/images/more.png' />       	
+        ");
 
     }; 	 
      
@@ -651,8 +631,6 @@ $post_meta = get_post_meta($order->id , '_payment_method', true);
 	$payment_method = $post_meta;
     //echo "<pre>".$payment_method."</pre>";
 	
-    $orderdesc = ""; 	 	
-
     foreach ($order->get_items() as $key => $lineItem) { 	
         $orderdesc.=$lineItem['name'].' (productid: '.$lineItem['product_id'].') '; 	
     }  	
@@ -660,12 +638,8 @@ $post_meta = get_post_meta($order->id , '_payment_method', true);
     $orderdesc.=" TOTAL ORDER VALUE: £".$order->get_total(); 	
     $address=$order->get_address('billing'); 	
     $street = $address['address_1']; 	
-
     $housenum = substr($street, 0, strpos($street, ' '));  
 	$orderid=  preg_replace("/[^0-9\.]/", "", $order->get_order_number());
-
-    $housenum = substr($street, 0, strpos($street, ' '));   
-
      
     echo("<!-- imegamedia start --> 	
     <!-- JQUERY ONLY NEEDED IF NOT ALREADY CALLED IN YOUR TEMPLATE --> 
@@ -678,10 +652,7 @@ $post_meta = get_post_meta($order->id , '_payment_method', true);
         }); 	
     </script> 		 	
 
-<<<<<<< HEAD
     <iframe id='calculatorFrame' src='https://www.finance-calculator.co.uk/fcheckout.php?imegaid=$imegaID&orderid=".$orderid."&orderamount=".$order->get_total()."&firstname=".$address['first_name']."&lastname=".$address['last_name']."&housenum=".$housenum."&street=".$address['address_1']."&postcode=".$address['postcode']."&email=".$address['email']."&telephone=".$address['phone']."&orderdesc=".$orderdesc."' style='width:100%; min-width:400px; height:600px;' scrolling='no' frameborder='0'>You need a Frames Capable browser to view this content.</iframe> 	
-
-    <iframe id='calculatorFrame' src='https://www.finance-calculator.co.uk/fcheckout.php?imegaid=$imegaID&orderid=".$order->get_order_number()."&orderamount=".$order->get_total()."&firstname=".$address['first_name']."&lastname=".$address['last_name']."&housenum=".$housenum."&street=".$address['address_1']."&postcode=".$address['postcode']."&email=".$address['email']."&telephone=".$address['phone']."&orderdesc=".$orderdesc."' style='width:100%; min-width:400px; height:600px;' scrolling='no' frameborder='0'>You need a Frames Capable browser to view this content.</iframe> 	
 
     <!-- imegamedia end -->");	  
 
@@ -791,10 +762,7 @@ function alter_woo_hooks (){
 
     remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20);
 
-
     add_action( 'woocommerce_single_product_summary', 'wc_in_stock_func', 11 );
-
-    add_action( 'woocommerce_single_product_summary', 'wc_in_stock_func', 61 );
 
     /**
      * Product Loop
@@ -809,10 +777,7 @@ function alter_woo_hooks (){
     * Single Product
     **/
 
-
     // add_action('woocommerce_single_product_summary', 'inter_show_sku', 6);
-
-    add_action('woocommerce_single_product_summary', 'inter_show_sku', 6);
 
     remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_excerpt', 20);
 
@@ -911,9 +876,9 @@ function disable_emojicons_tinymce( $plugins ) {
 
 add_filter( 'emoji_svg_url', '__return_false' );
 
+
 /**
  * ADD YITH CODE
  **/
-
 
 add_filter('yith_wccos_add_all_custom_order_status_actions', '__return_true'); ?>

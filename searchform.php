@@ -13,8 +13,7 @@
 
 	<input type="hidden" name="post_type" value="product" />
 
-	<button type="submit" value="true" class="btn btn--primary search-form__submit" name="submit" id="searchsubmit">
-
+	<button type="submit" class="btn btn--primary search-form__submit" name="submit" id="searchsubmit">
 		<i class="fa fa-search" aria-hidden="true"></i>
 	</button>
 	

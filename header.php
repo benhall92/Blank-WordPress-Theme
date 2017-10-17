@@ -186,7 +186,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po
 						<span class="header__icon">
 							<a class="mobile-cart-count" href="<?php echo WC()->cart->get_cart_url(); ?>">
 								<i class="fa fa-shopping-basket" aria-hidden="true"></i>
-								(<?php echo  WC()->cart->get_cart_contents_count(); ?>)
+								(<?php echo WC()->cart->get_cart_contents_count(); ?>)
 								<span class="icon__text">Basket</span>
 							</a>
 						</span>
@@ -222,7 +222,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po
 								<?php //global $woocommerce; ?>
 
 								<a class="cart-count btn btn--primary btn--small basket basket--primary" href="<?php echo WC()->cart->get_cart_url(); ?>"><i class=" fa fa-shopping-basket" aria-hidden="true"></i>
-									(<?php echo  WC()->cart->get_cart_contents_count(); ?>)<span>
+									(<?php echo WC()->cart->get_cart_contents_count(); ?>)<span>
 									<?php _e('BASKET', 'oakworld'); ?></span></a>
 
 							</div>

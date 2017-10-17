@@ -15,7 +15,7 @@
 		<div id="sidebarMobileTrigger" class="clearfix sidebar__mobile-trigger" data-desk="desk-hidden" data-lap="lap-hidden">
 		
 			<p class="float-left">
-				<?php echo _e('Menu', 'oakworld'); ?>
+				<?php echo _e('Menu', 'blank-theme'); ?>
 			</p>
 
 			<span class="float-right">

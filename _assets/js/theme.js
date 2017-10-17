@@ -201,7 +201,6 @@ jQuery(document).ready(function($) {
 
 	Interpolate.megaMenuOverlay = function () {
 
-<<<<<<< HEAD
 			var $li = $('.mega-menu > li');
 
 			$li.mouseenter( function (e) {
@@ -232,31 +231,6 @@ jQuery(document).ready(function($) {
 
 			});
 		}
-=======
-		var $li = $('.mega-menu > li');
-
-		$li.mouseenter( function (e) {
-
-			if( !$(this).hasClass('has-mega-menu') ){
-
-				return;
-			}
-
-			if( $(e.target).closest('.mega-menu__list').length ){
-
-				if( $('.mega-menu-overlay').is(':hidden') ){
-
-					$('.mega-menu-overlay').show();
-				}
-			}
-
-		}).mouseleave( function (e) {
-
-			$('.mega-menu-overlay').hide();
-
-		});
-	}
->>>>>>> 83e6d5ad49301160313cfe670a17c605ee24338f
 
 	Interpolate.wishlistReverse = function () {
 

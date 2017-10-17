@@ -83,9 +83,7 @@ get_header( 'shop' ); ?>
 				<div id="sidebarMobileTrigger" class="clearfix sidebar-mobile-trigger" data-desk="desk-hidden" data-lap="lap-hidden">
 		
 					<p class="float-left">
-						
 						<?php echo _e('Menu', 'oakworld'); ?>
-
 					</p>
 
 					<span class="float-right">
