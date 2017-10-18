@@ -54,7 +54,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	 *
 	 * @hooked woocommerce_template_loop_product_title - 10
 	 */
-	// do_action( 'woocommerce_shop_loop_item_title' );
+	do_action( 'woocommerce_shop_loop_item_title' );
 
 	/**
 	 * woocommerce_after_shop_loop_item_title hook.
@@ -62,16 +62,12 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	 * @hooked woocommerce_template_loop_rating - 5
 	 * @hooked woocommerce_template_loop_price - 10
 	 */
-	// do_action( 'woocommerce_after_shop_loop_item_title' );?>
+	do_action( 'woocommerce_after_shop_loop_item_title' );?>
 
 	<div class="product-loop__info">
 
 		<div class="product-loop__title">
 			<h3><?php the_title(); ?></h3>
-		</div>
-
-		<div class="product-loop__wish">
-			<?php echo do_shortcode('[yith_wcwl_add_to_wishlist]'); ?>
 		</div>
 		
 	</div>
@@ -90,6 +86,10 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 			
 		</div>
 
+	</div>
+
+	<div class="product-loop__wish">
+		<?php echo do_shortcode('[yith_wcwl_add_to_wishlist]'); ?>
 	</div>
 
 	<div class="product-loop__button">

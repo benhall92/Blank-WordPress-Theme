@@ -35,7 +35,7 @@
 	font-size: 14px;
 	color: $primary-gray;
 
-	@media only screen and (max-width: 640px){
+	@media only screen and (max-width: 639px){
 		color: #FFF;
 		text-align: center;
 	}
@@ -45,7 +45,7 @@
 	line-height: inherit;
 	color: $primary-gray;
 
-	@media only screen and (max-width: 640px){
+	@media only screen and (max-width: 639px){
 		color: #FFF;
 	}
 }

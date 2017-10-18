@@ -505,7 +505,7 @@ input, button, select, textarea{
 
 	&.nav--primary{
 		position: relative;
-		z-index: 8009;
+		z-index: 1499;
 		background-color: #FFF;
 		border-bottom: #EEE solid 1px;
 
@@ -565,7 +565,7 @@ input, button, select, textarea{
 
 	&.nav--mobile{
 		display: none;
-		z-index: 8009;
+		z-index: 1499;
 		background-color: #FFF;
 
 		&.is--open{
@@ -796,7 +796,7 @@ input, button, select, textarea{
 	.woocommerce-ordering{
 		margin: 0;
 
-		@media only screen and (max-width: 640px){
+		@media only screen and (max-width: 639px){
 			float: none;
 			margin: 10px 0 0;
 		}
@@ -806,7 +806,7 @@ input, button, select, textarea{
 			background-color: #FFF;
 			@include select-x-small(!important);
 
-			@media only screen and (max-width: 640px){
+			@media only screen and (max-width: 639px){
 				width: 100%;
 			}
 		}
@@ -991,7 +991,7 @@ input, button, select, textarea{
 		border-top: none;
 		font-size: $base-font;
 
-		@media only screen and (max-width: 640px){
+		@media only screen and (max-width: 639px){
 			padding: 1em 2em 1em 2em;
 		}
 
@@ -1002,7 +1002,7 @@ input, button, select, textarea{
 		.button{
 			color: $primary-gray;
 
-			@media only screen and (max-width: 640px){
+			@media only screen and (max-width: 639px){
 				width: 100%;
 				display: block;
 				margin-bottom: 10px;
