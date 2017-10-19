@@ -29,7 +29,9 @@ if( isset($_GET['view']) ){
 
 	if( $_GET['view'] === 'all' ) { ?>
 
-	  <div id="wg-view-all"><a class="view-all" href=".">View Less</a></div>
+		<div class="float-left">
+	  		<div id="wg-view-all"><a class="view-all" href=".">View Less</a></div>
+	  	</div>
 
 	<?php }
 
@@ -40,11 +42,23 @@ if ( $wp_query->max_num_pages <= 1 )
 ?>
 
 <nav class="woocommerce-pagination">
-	<?php if (is_paged()) : ?> 
-	  <div class="float-left"><a class="view-all" href="../../?view=all">View All</a></div>
-	<?php else: ?>
-	  <div class="float-left"><a class="view-all" href="?view=all">View All</a></div>
+
+	<?php if( !isset($_GET['view']) ): ?>
+
+		<?php if (is_paged()) : ?> 
+
+			<?php $url = get_nopaging_url(); ?>
+			
+			<div class="float-left"><a class="view-all" href="<?php echo esc_url( add_query_arg( 'view', 'all', $url ) ); ?>">View All</a></div>
+
+		<?php else: ?>
+
+			<div class="float-left"><a class="view-all" href="<?php echo esc_url( add_query_arg( 'view', 'all' ) ); ?>">View All</a></div>
+
+		<?php endif; ?>
+
 	<?php endif; ?>
+
 	<?php
 		echo paginate_links( apply_filters( 'woocommerce_pagination_args', array(
 			'base'         => esc_url_raw( str_replace( 999999999, '%#%', remove_query_arg( 'add-to-cart', get_pagenum_link( 999999999, false ) ) ) ),

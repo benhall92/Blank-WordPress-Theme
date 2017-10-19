@@ -428,22 +428,19 @@ add_action( 'woocommerce_process_product_meta', 'woo_add_custom_shipping_fields_
  * SRC: https://blog.webguysaz.com/2013/10/31/add-woocommerce-view-all-pagination-option-to-product-listings/
  */
 
-add_filter('loop_shop_per_page', 'wg_view_all_products');
-
 function wg_view_all_products(){
 
     if( !isset($_GET['view']) ){
         return;
     }
 
-    if($_GET['view'] === 'all'){
-        return '9999';
-    }else{
-        return '12';
-    }
+    if( $_GET['view'] === 'all' ){
+        
+        return '250';
 
-    if($_GET['view'] === 'all'){
-        return '9999';
+    }else{
+        
+        return '12';
     }
 }
 
@@ -480,6 +477,14 @@ function woocomerce_brands_filter( $args ) {
     return $args;
 }
 
+function get_nopaging_url() {
+    $current_url =  $_SERVER['REQUEST_URI'];
+
+    $pattern = '/page\\/[0-9]+\\//i';
+    $nopaging_url = preg_replace($pattern, '', $current_url);
+
+    return  $nopaging_url;
+}
 
 /**
  * Show product weight on order form
@@ -759,6 +764,8 @@ function add_view_more_button () {
 add_action('init','alter_woo_hooks');
 
 function alter_woo_hooks (){
+
+    add_filter('loop_shop_per_page', 'wg_view_all_products', 20);
 
     remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20);
 
